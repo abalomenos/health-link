@@ -8,15 +8,17 @@ import Nav from "./components/Nav";
 const App = () => (
   <Router>
     <div>
-      <Nav />
+      {/* <Nav />
       <Switch>
         <Route exact path="/" component={Books} />
         <Route exact path="/books" component={Books} />
         <Route exact path="/books/:id" component={Detail} />
         <Route component={NoMatch} />
-      </Switch>
+      </Switch> */}
+      <Books/>
     </div>
   </Router>
+  
 );
 
 export default App;
