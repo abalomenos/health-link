@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Health Manager",
+  "name": "My Health Manager",
   "icons": [
     {
       "src": "favicon.ico",
