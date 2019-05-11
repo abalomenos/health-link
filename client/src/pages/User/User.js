@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import { Col, Row, Container } from "../../components/Grid";
-import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
+// import { Col, Row, Container } from "../../components/Grid";
+// import Jumbotron from "../../components/Jumbotron";
+// import API from "../../utils/API";
 // import { List, ListItem } from "../../components/List";
-import { Input, FormBtn } from "../../components/Form";
+// import { Input, FormBtn } from "../../components/Form";
 
 class User extends Component {
   state = {
