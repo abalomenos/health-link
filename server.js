@@ -17,7 +17,7 @@ if (process.env.NODE_ENV === "production") {
 app.use(routes);
 
 // Define local MongoDB URI
-var databaseUri = "mongodb://localhost/reactreadinglist";
+var databaseUri = "mongodb://localhost/sampleusers";
 
 // Connect to the Mongo DB
 if (process.env.MONGODB_URI) {

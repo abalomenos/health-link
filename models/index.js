@@ -1,3 +1,3 @@
 module.exports = {
-  Wellness: require("./wellness"),
+  User: require("./user"),
 };

@@ -7,51 +7,31 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, TextArea, FormBtn } from "../../components/Form";
 
-class Books extends Component {
+class Day extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: ""
+    user: []
+    
   };
 
   componentDidMount() {
-    this.loadBooks();
+    this.displayDay();
   }
 
-  loadBooks = () => {
-    API.getBooks()
+  displayDay = id => {
+    API.getUser(id)
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
+        this.setState({ user: res.data })
       )
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
+  // deleteUser = id => {
+  //   API.deleteUser(id)
+  //     .then(res => this.displayDay())
+  //     .catch(err => console.log(err));
+  // };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+ 
 
   render() {
     return (
@@ -115,4 +95,4 @@ class Books extends Component {
   }
 }
 
-export default Books;
+export default Day;

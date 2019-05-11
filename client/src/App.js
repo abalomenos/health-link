@@ -1,22 +1,23 @@
 import React from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
-import NavTabs from "./components/NavTabs";
-import About from "./components/pages/About";
-import Discover from "./components/pages/Discover";
-import Search from "./components/pages/Search";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Day from "./pages/Day";
+import Week from "./pages/Week";
+import User from "./pages/User";
+import Nav from "./components/Nav";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <NavTabs />
-        <Route exact path="/" component={About} />
-        <Route exact path="/about" component={About} />
-        <Route exact path="/discover" component={Discover} />
-        <Route exact path="/search" component={Search} />
-      </div>
-    </Router>
-  );
-}
+const App = () => (
+  <Router>
+    <div>
+      <Nav />
+      <Switch>
+        {/* <Route exact path="/" component={Books} /> */}
+        <Route exact path="/user" component={User} />
+        <Route exact path="/day" component={Day} />
+        <Route exact path="/week" component={Week} />
+        <Route component={User} />
+      </Switch>
+    </div>
+  </Router>
+);
 
 export default App;

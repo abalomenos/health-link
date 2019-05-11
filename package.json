@@ -9,20 +9,20 @@
     "start:dev": "concurrently \"nodemon --ignore 'client/*'\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node scripts/seedDB.js",
-    "install": "cd client && yarn install",
+    "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^3.5.0",
-    "nodemon": "^1.11.0"
+    "concurrently": "^4.1.0",
+    "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "axios": "^0.16.2",
+    "axios": "^0.18.0",
     "express": "^4.16.3",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.0.17"
+    "mongoose": "^5.3.16",
+    "if-env": "^1.0.4"
   }
 }

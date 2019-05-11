@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const wellnessSchema = new Schema({
+const userSchema = new Schema({
   name: { type: Number, required: true },
   age: { body: String, date: Date },
   weight: { type: Number, required: true },
-  height: { type: Number, required: true },
+  height: { type: Number, required: false },
   water_goal: Number, 
   water_progress: [
     {
@@ -36,6 +36,6 @@ const wellnessSchema = new Schema({
   ]
 });
 
-const Wellness = mongoose.model("Wellness", wellnessSchema);
+const User = mongoose.model("User", userSchema);
 
-module.exports = Wellness;
+module.exports = User;
