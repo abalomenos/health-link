@@ -6,8 +6,8 @@ function NavTabs() {
     <ul className="nav nav-tabs">
       <li className="nav-item">
         <Link
-          to="/about"
-          className={window.location.pathname === "/about" ? "nav-link active" : "nav-link"}
+          to="/day"
+          className={window.location.pathname === "/day" ? "nav-link active" : "nav-link"}
         >
           About
         </Link>
