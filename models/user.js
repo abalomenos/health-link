@@ -5,7 +5,7 @@ const userSchema = new Schema({
   name: { type: String, required: true },
   age: { type: Number, required: true},
   weight: { type: Number, required: true },
-  height: { type: Number, required: false },
+  height: { type: Number, required: true },
   water_goal: Number, 
   water_progress: [
     {
