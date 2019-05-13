@@ -11,6 +11,7 @@ class Day extends Component {
   render() {
     return (
       <div>
+        {/* <canvas id="myChart"></canvas> */}
   
       </div>
   

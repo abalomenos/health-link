@@ -6,7 +6,7 @@ import React, { Component } from "react";
 // import { Col, Row, Container } from "../../components/Grid";
 // import { List, ListItem } from "../../components/List";
 // import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Navbar, NavItem, Modal, Button} from 'react-materialize';
+import { Navbar, NavItem, Modal, Button, TextInput} from 'react-materialize';
 
 let img = "./assets/images/burger.jpg"
 
@@ -18,10 +18,23 @@ render() {
 
       <Navbar brand={<a />} alignLinks="right">
         <Modal trigger={<NavItem href="">Login</NavItem>}>
+        <TextInput label="First Name" />
+        <TextInput email validate label="Email" />
+        <TextInput password label="Password" />
 
         </Modal>
 
         <Modal trigger={<NavItem href="">Create Profile</NavItem>}>
+        <TextInput label="First Name" />
+        <TextInput email validate label="Email" />
+        <TextInput password label="Password" />
+        <TextInput label="Age" />
+        <TextInput label="Weight" />
+        <TextInput label="Height" />
+        <TextInput label="Target Water Consumption" />
+        <TextInput label="Target Weekly Exercise" />
+        <TextInput label="Target hours of sleep" />
+        <TextInput label="Target Calories" />
 
         </Modal>
 
