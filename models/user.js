@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: { type: Number, required: true },
-  age: { body: String, date: Date },
+  name: { type: String, required: true },
+  age: { type: Number, required: true},
   weight: { type: Number, required: true },
   height: { type: Number, required: false },
   water_goal: Number, 
