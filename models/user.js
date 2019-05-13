@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   name: { type: String, required: true },
-  age: { type: Number, required: true },
+  age: { type: Number, required: true},
   weight: { type: Number, required: true },
   height: { type: Number, required: true },
   water_goal: Number, 
