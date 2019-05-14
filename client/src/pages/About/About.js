@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import {Bar} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
+
 
 let img = "./assets/images/burger.jpg";
 
@@ -30,7 +32,7 @@ class About extends Component {
     weight: ""
   };
 
-  data = {
+  data1 = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [{
       label: "My First dataset",
@@ -39,6 +41,20 @@ class About extends Component {
       data: [0, 10, 5, 2, 20, 30, 45],
     }]
   }
+
+  data2 = {
+    datasets: [{
+        data: [10, 20, 30],
+        backgroundColor : [
+          "red", "green", "blue", "purple", "magenta"
+        ]
+    }],
+    labels: [
+        'Red',
+        'Yellow',
+        'Blue'
+    ]
+};
 
   componentDidMount() {
     // Initialize Firebase
@@ -76,12 +92,15 @@ class About extends Component {
       <div>
         {/* <div className="background" style={{ backgroundImage: `url(${img})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "800px"}}></div> */}
         <Bar
-          data={this.data}
-          width={200}
-          height={150}
+          data={this.data1}
+          width={100}
+          height={50}
           options={{ maintainAspectRatio: false }}
         />
-
+        <Doughnut 
+        data={this.data2}
+        
+        />
 
 
       </div>
