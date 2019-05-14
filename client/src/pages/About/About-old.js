@@ -91,7 +91,16 @@ class About extends Component {
     return (
       <div>
         {/* <div className="background" style={{ backgroundImage: `url(${img})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "800px"}}></div> */}
-
+        <Bar
+          data={this.data1}
+          width={100}
+          height={50}
+          options={{ maintainAspectRatio: false }}
+        />
+        <Doughnut 
+        data={this.data2}
+        
+        />
 
 
       </div>

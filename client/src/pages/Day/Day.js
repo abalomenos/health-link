@@ -1,11 +1,7 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../../components/Jumbotron";
+import {Bar, Pie, Line} from 'react-chartjs-2';
+import {Row, Col} from 'react-materialize';
 import API from "../../utils/API";
-// import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-// import { Input, TextArea, FormBtn } from "../../components/Form";
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCCez8DBQCibI7u56xLHXEXeds8HYtKyNU",
@@ -36,7 +32,6 @@ class Day extends Component {
   componentDidMount() {
     // Initialize Firebase
     // firebase.initializeApp(firebaseConfig);
-    this.getUser();
   };
 
   // getUser() {
@@ -63,10 +58,93 @@ class Day extends Component {
   //   });
   // }
 
+  water = {
+    labels: ["Water"],
+    datasets: [{
+      label: "Water Consumption",
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [5],
+    }]
+  }
+
+  calories = {
+    labels: ["Calories"],
+    datasets: [{
+      data: [800, 50, 600, 90, 20],
+      backgroundColor : [
+        "red", "green", "blue", "purple", "magenta"
+      ]
+  }],
+  labels: [
+      'Calories',
+      'Protein',
+      'Carbs',
+      'Fat',
+      'Fibre'
+  ]
+  }
+
+  workout = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+  datasets: [
+    {
+      label: 'My First dataset',
+      fill: false,
+      lineTension: 0.1,
+      backgroundColor: 'rgba(75,192,192,0.4)',
+      borderColor: 'rgba(75,192,192,1)',
+      borderCapStyle: 'butt',
+      borderDash: [],
+      borderDashOffset: 0.0,
+      borderJoinStyle: 'miter',
+      pointBorderColor: 'rgba(75,192,192,1)',
+      pointBackgroundColor: '#fff',
+      pointBorderWidth: 1,
+      pointHoverRadius: 5,
+      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
+      pointHoverBorderColor: 'rgba(220,220,220,1)',
+      pointHoverBorderWidth: 2,
+      pointRadius: 1,
+      pointHitRadius: 10,
+      data: [65, 59, 80, 81, 56, 55, 40]
+    }
+  ]
+  };
+
+  
+
   render() {
     return (
       <div>
-        {/* <canvas id="myChart"></canvas> */}
+        <Row>
+        <Col className="s2 offset-s3 white-text">
+          <Bar
+            data={this.water}
+            width={100}
+            height={100}
+            options={{ maintainAspectRatio: true }}
+          />
+        </Col>
+        <Col className="s2 offset-s2 white-text" >
+          <Pie
+            width={100}
+            height={100}
+            data={this.calories}
+            options={{ maintainAspectRatio: true }}
+          />
+        </Col>
+        </Row>
+        <Row>
+        <Col className="s2 offset-s3 white-text">
+          <Line
+            data={this.workout}
+            width={100}
+            height={100}
+            options={{ maintainAspectRatio: true }}
+          />
+        </Col>
+        </Row>
   
       </div>
   
