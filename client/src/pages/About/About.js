@@ -1,12 +1,7 @@
 import React, { Component } from "react";
-// import DeleteBtn from "../../components/DeleteBtn";
-// import Jumbotron from "../../components/Jumbotron";
-// import API from "../../utils/API";
-// import { Link } from "react-router-dom";
-// import { Col, Row, Container } from "../../components/Grid";
-// import { List, ListItem } from "../../components/List";
-// import { Input, TextArea, FormBtn } from "../../components/Form";
-import { Navbar, NavItem, Modal, Button, TextInput} from 'react-materialize';
+import {Bar} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
+
 
 let img = "./assets/images/burger.jpg";
 
@@ -26,6 +21,8 @@ let img = "./assets/images/burger.jpg";
 //   } 
 // });
 
+
+
 class About extends Component {
   state = {
     name: "",
@@ -34,6 +31,30 @@ class About extends Component {
     age: "",
     weight: ""
   };
+
+  data1 = {
+    labels: ["January", "February", "March", "April", "May", "June", "July"],
+    datasets: [{
+      label: "My First dataset",
+      backgroundColor: 'rgb(255, 99, 132)',
+      borderColor: 'rgb(255, 99, 132)',
+      data: [0, 10, 5, 2, 20, 30, 45],
+    }]
+  }
+
+  data2 = {
+    datasets: [{
+        data: [10, 20, 30],
+        backgroundColor : [
+          "red", "green", "blue", "purple", "magenta"
+        ]
+    }],
+    labels: [
+        'Red',
+        'Yellow',
+        'Blue'
+    ]
+};
 
   componentDidMount() {
     // Initialize Firebase
@@ -64,39 +85,27 @@ class About extends Component {
   //   });
   // };
 
+
+  
   render() {
     return (
-    <div>
+      <div>
+        {/* <div className="background" style={{ backgroundImage: `url(${img})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "800px"}}></div> */}
+        <Bar
+          data={this.data1}
+          width={100}
+          height={50}
+          options={{ maintainAspectRatio: false }}
+        />
+        <Doughnut 
+        data={this.data2}
+        
+        />
 
-      <Navbar brand={<a />} alignLinks="right">
-        <Modal trigger={<NavItem href="">Login</NavItem>}>
-        <TextInput label="First Name" />
-        <TextInput email validate label="Email" />
-        <TextInput password label="Password" />
-
-        </Modal>
-
-        <Modal trigger={<NavItem href="">Create Profile</NavItem>}>
-        <TextInput label="First Name" />
-        <TextInput email validate label="Email" />
-        <TextInput password label="Password" />
-        <TextInput label="Age" />
-        <TextInput label="Weight" />
-        <TextInput label="Height" />
-        <TextInput label="Target Water Consumption" />
-        <TextInput label="Target Weekly Exercise" />
-        <TextInput label="Target hours of sleep" />
-        <TextInput label="Target Calories" />
-
-        </Modal>
-
-      </Navbar>
-      <div className="background" style={{ backgroundImage: `url(${img})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "800px"}}>
 
       </div>
-
-    </div>
-
+      
+    
 
     );
   }
