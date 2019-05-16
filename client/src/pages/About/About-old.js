@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { Bar } from 'react-chartjs-2';
-import { Doughnut, Bubble } from 'react-chartjs-2';
+import {Bar} from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 
 
 let img = "./assets/images/burger.jpg";
@@ -44,43 +44,17 @@ class About extends Component {
 
   data2 = {
     datasets: [{
-      data: [10, 20, 30],
-      backgroundColor: [
-        "red", "green", "blue", "purple", "magenta"
-      ]
+        data: [10, 20, 30],
+        backgroundColor : [
+          "red", "green", "blue", "purple", "magenta"
+        ]
     }],
     labels: [
-      'Red',
-      'Yellow',
-      'Blue'
+        'Red',
+        'Yellow',
+        'Blue'
     ]
-  };
-
-  data3 = {
-    datasets: [
-      {
-        label: 'My First dataset',
-        fill: false,
-        lineTension: 0.1,
-        backgroundColor: 'rgba(75,192,192,0.4)',
-        borderColor: 'rgba(75,192,192,1)',
-        borderCapStyle: 'butt',
-        borderDash: [],
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointBorderColor: 'rgba(75,192,192,1)',
-        pointBackgroundColor: '#fff',
-        pointBorderWidth: 1,
-        pointHoverRadius: 5,
-        pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-        pointHoverBorderColor: 'rgba(220,220,220,1)',
-        pointHoverBorderWidth: 2,
-        pointRadius: 1,
-        pointHitRadius: 10,
-        data: [{x:10,y:20,r:5}]
-      }
-    ]
-  }
+};
 
   componentDidMount() {
     // Initialize Firebase
@@ -99,7 +73,7 @@ class About extends Component {
   //     // Handle Errors here.
   //     var errorCode = error.code;
   //     alert(error.Message);
-
+  
   //   });
   // };
 
@@ -112,19 +86,26 @@ class About extends Component {
   // };
 
 
-
+  
   render() {
     return (
       <div>
         {/* <div className="background" style={{ backgroundImage: `url(${img})`, backgroundPosition: "center", backgroundRepeat: "no-repeat", height: "800px"}}></div> */}
-
-
-
+        <Bar
+          data={this.data1}
+          width={100}
+          height={50}
+          options={{ maintainAspectRatio: false }}
+        />
+        <Doughnut 
+        data={this.data2}
+        
+        />
 
 
       </div>
-
-
+      
+    
 
     );
   }
