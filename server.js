@@ -1,7 +1,8 @@
 const express = require("express");
 
 const mongoose = require("mongoose");
-const routes = require("./routes");
+const router = require("./routes/authRoutes");
+const routes = require("./routes/index");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -15,6 +16,8 @@ if (process.env.NODE_ENV === "production") {
 }
 // Add routes, both API and view
 app.use(routes);
+
+router.initRouter(app)
 
 // Define local MongoDB URI
 var databaseUri = "mongodb://localhost/sampleusers";

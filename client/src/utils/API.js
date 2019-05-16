@@ -20,5 +20,13 @@ export default {
   // Updates a user in the database
   updateUser: function(id) {
     return axios.put("/api/users", + id);
+  },
+  // signs in a user
+  signin: function() {
+    return axios.post("/signin");
+  },
+  //signs up a user
+  signup: function() {
+    return axios.post("/signup");
   }
 };
