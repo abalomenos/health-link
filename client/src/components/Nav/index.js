@@ -37,6 +37,7 @@ class Nav extends Component {
           <Modal trigger={<NavItem href="">Login</NavItem>}>
             <TextInput email validate label="Email" />
             <TextInput password label="Password" />
+            <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
           </Modal>
   
           <Modal trigger={<NavItem href="">Create Profile</NavItem>}>

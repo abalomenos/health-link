@@ -3,87 +3,34 @@ import {Bar, Pie, Line} from 'react-chartjs-2';
 import {Row, Col} from 'react-materialize';
 import API from "../../utils/API";
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyCCez8DBQCibI7u56xLHXEXeds8HYtKyNU",
-//   authDomain: "health-dashboard-7721d.firebaseapp.com",
-//   databaseURL: "https://health-dashboard-7721d.firebaseio.com",
-//   projectId: "health-dashboard-7721d",
-//   storageBucket: "health-dashboard-7721d.appspot.com",
-//   messagingSenderId: "884846492477",
-//   appId: "1:884846492477:web:cdba4940c036659d"
-// };
 
-// firebase.auth().onAuthStateChanged(user => {
-//   if(user) {
-//     window.location = '/'; //After successful login, user will be redirected to home.html
-//   } 
-// });
 
 class Day extends Component {
+
+  addOne = this.addOne.bind(this);
+  subOne = this.subOne.bind(this);
+  addOneWater = this.addOneWater.bind(this);
+  subOneWater = this.subOneWater.bind(this);
+
   state = {
-    name: "",
-    id: "",
-    date: Date.now(),
-    water_goal: "",
-    calorie_goal: "",
-    exercise_goal: "",
-    sleep_goal: ""
+    sleepCounter: 8,
+    waterCounter: 1,
+    proteinCounter: 90,
+    carbsCounter: 50,
+    fatCounter: 40,
+    caloriesCounter: 1500
   };
+
   componentDidMount() {
-    // Initialize Firebase
-    // firebase.initializeApp(firebaseConfig);
+
   };
+// ****************** Test data ***************
 
-  // getUser() {
-  //   API.getUser(firebase.auth().currentUser.uid)
-  //     .then(res =>
-  //       this.setState({
-  //         name: res.data.name,
-  //         id: firebase.auth().currentUser.uid,
-  //         date: Date.now(),
-  //         water_goal: res.data.water_goal,
-  //         calorie_goal: res.data.calorie_goal,
-  //         exercise_goal: res.data.exercise_goal,
-  //         sleep_goal: res.data.sleep_goal
-  //       })
-  //       )
-  // }
-
-  // signOut () {
-  //   firebase.auth().signOut().then(function(){}).catch(function(error) {
-  //     // Handle Errors here.
-  //     var errorCode = error.code;
-  //     alert(error.Message);
-
-  //   });
-  // }
-
-  water = {
-    labels: ["Water"],
-    datasets: [{
-      label: "Water Consumption",
-      backgroundColor: 'rgb(255, 99, 132)',
-      borderColor: 'rgb(255, 99, 132)',
-      data: [5],
-    }]
+  nutrition = {
+    
   }
 
-  calories = {
-    labels: ["Calories"],
-    datasets: [{
-      data: [800, 50, 600, 90, 20],
-      backgroundColor : [
-        "red", "green", "blue", "purple", "magenta"
-      ]
-  }],
-  labels: [
-      'Calories',
-      'Protein',
-      'Carbs',
-      'Fat',
-      'Fibre'
-  ]
-  }
+  calories = 1500;
 
   workout = {
     labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
@@ -111,38 +58,141 @@ class Day extends Component {
     }
   ]
   };
+  // ****************** Test data End ***************
 
-  
+  addOne() {
+    this.setState((prevState) => {
+      return {
+        sleepCounter : prevState.sleepCounter + 1
+        };
+     });
+  }
+
+   subOne() {
+
+    this.setState((prevState) => {
+      return {
+        sleepCounter: prevState.sleepCounter == 0 ? prevState.sleepCounter: prevState.sleepCounter - 1
+        };
+     });
+  }
+
+  addOneWater() {
+    this.setState((prevState) => {
+      console.log(this.state.waterCounter);
+      return {
+        waterCounter : prevState.waterCounter + 1
+        };
+        
+     });
+  }
+
+   subOneWater() {
+
+    this.setState((prevState) => {
+      return {
+        waterCounter: prevState.waterCounter == 0 ? prevState.waterCounter: prevState.waterCounter - 1
+        };
+     });
+  }
 
   render() {
     return (
       <div>
         <Row>
-        <Col className="s2 offset-s3 white-text">
+          <Col className="s2 offset-s7 black-text center-align">
+            Calories: {this.calories}
+          </Col>
+        </Row>
+        <Row>
+        <Col className="s2 offset-s3 white-text center-align">
           <Bar
-            data={this.water}
+            data={{
+              labels: ["Cups (1 cup = 8 fl. oz.)"],
+              datasets: [{
+                label: "Water Consumption",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [this.state.waterCounter]
+              }]
+            }}
             width={100}
             height={100}
-            options={{ maintainAspectRatio: true }}
+            options={{
+              maintainAspectRatio: true,
+              scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        min: 0,
+                        max: 8   
+                    }
+                  }]
+               }
+            }}
           />
+          <br/>
+          <input type='button' onClick={this.addOneWater} value='Inc'/>
+          <input type='button' onClick={this.subOneWater} value='Dec'/>
         </Col>
-        <Col className="s2 offset-s2 white-text" >
+        <Col className="s2 offset-s2 white-text center-align" >
           <Pie
             width={100}
             height={100}
-            data={this.calories}
+            data={{
+              labels: ["Calories"],
+              datasets: [{
+                data: [this.state.proteinCounter, this.state.carbsCounter, this.state.fatCounter],
+                backgroundColor : [
+                  "red", "green", "blue"
+                ]
+              }],
+              labels: [
+                  'Protein',
+                  'Carbs',
+                  'Fat'
+              ]
+            }}
             options={{ maintainAspectRatio: true }}
           />
         </Col>
         </Row>
         <Row>
-        <Col className="s2 offset-s3 white-text">
-          <Line
-            data={this.workout}
+        <Col className="s2 offset-s3 black-text center-align">
+          <label>
+            <input type="checkbox" class="filled-in" />
+            <span>Workout</span>
+          </label>
+        </Col>
+        <Col className="s2 offset-s2 black-text center-align">
+          <Bar
+            data={{
+              labels: ["Hours"],
+              datasets: [{
+                label: "Sleep Last Night",
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: [this.state.sleepCounter]
+              }]
+            }}
             width={100}
             height={100}
-            options={{ maintainAspectRatio: true }}
+            options={{
+              maintainAspectRatio: true,
+              scales: {
+                yAxes: [{
+                    ticks: {
+                        beginAtZero:true,
+                        min: 0,
+                        max: 10    
+                    }
+                  }]
+               }
+            }}
           />
+          <br/>
+          <input type='button' onClick={this.addOne} value='Inc'/>
+          <input type='button' onClick={this.subOne} value='Dec'/>
         </Col>
         </Row>
   
