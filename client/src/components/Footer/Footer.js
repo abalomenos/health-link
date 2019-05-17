@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import {Footer, Row, Col, Container} from 'react-materialize';
 
+import './Footer.css';
+
 class Foot extends Component {
   
     render() {
@@ -24,7 +26,7 @@ class Foot extends Component {
                             <li><a className="black-text text-lighten-1" href="#!">Irene Villafane</a></li>
                         </ul>
                     }
-                    className="example"
+                    className="footer"
                     >
                     <Container>
                         <Row>
