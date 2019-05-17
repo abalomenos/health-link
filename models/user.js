@@ -2,10 +2,13 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: { type: Number, required: true },
-  age: { body: String, date: Date },
+  name: { type: String, required: true },
+  age: { type: Number, required: true},
   weight: { type: Number, required: true },
-  height: { type: Number, required: false },
+  height: { type: Number, required: true },
+  isMale: { type: Boolean, default: false, required: true },
+  activity: { type: String, required: true },
+  BMI: { type: Number, required: true },
   water_goal: Number, 
   water_progress: [
     {
@@ -20,10 +23,13 @@ const userSchema = new Schema({
     date: {type: Date}
     }
   ],
-  calories_goal: Number, 
-  calories_progress: [
+  intake_goal: Number, 
+  intake_progress: [
     {
-    metric: { type: Number },
+    calories: { type: Number },
+    protein: { type: Number },
+    fat: { type: Number },
+    carbs: { type: Number },
     date: {type: Date}
     }
   ],

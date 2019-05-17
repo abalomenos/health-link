@@ -1,0 +1,36 @@
+
+.mainWrapper {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.containerDay {
+    position: relative;
+    background-color: rgb(221, 221, 221, 0.9);
+}
+
+.divider {
+    background-color: #000000;
+}
+
+.infoSection {
+    color: rgb(126, 75, 75);
+}
+
+.leftArrow {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+}
+
+.rightArrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+}
+
+.workoutContainer img {
+    height: 100%;
+    width: 100%;
+}
