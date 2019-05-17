@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Navbar, NavItem, Modal, Button, TextInput, Icon} from 'react-materialize';
 
+import './Nav.css';
+
 class Nav extends Component {
     state = {
       open: false,
@@ -33,14 +35,14 @@ class Nav extends Component {
       return (
         <div>
 
-        <Navbar brand={<a />} alignLinks="right">
-          <Modal trigger={<NavItem href="">Login</NavItem>}>
+        <Navbar brand={<a className="navText" href="#!"> Health Link</a>} alignLinks="right">
+          <Modal trigger={<NavItem className="navText">Login</NavItem>}>
             <TextInput email validate label="Email" />
             <TextInput password label="Password" />
             <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
           </Modal>
   
-          <Modal trigger={<NavItem href="">Create Profile</NavItem>}>
+          <Modal trigger={<NavItem className="navText">Register</NavItem>}>
             <TextInput label="First Name" />
             <TextInput email validate label="Email" />
             <TextInput password label="Password" />

@@ -1,6 +1,25 @@
 
 body {
     font-family: 'Roboto', sans-serif;
+    min-height: 100vh;
+}
+
+#root, #root > div, body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mainWrapper {
+    min-height: calc(100vh - 305px);
+    padding: 50px 0px;
+}
+
+Footer {
+    position: relative;;
+    /* left:0;
+    bottom:0;
+    right:0; */
 }
 
 .col {
