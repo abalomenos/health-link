@@ -24,6 +24,7 @@
     "bcrypt-nodejs": "0.0.3",
     "chart.js": "^2.8.0",
     "express": "^4.16.3",
+    "healthstats": "^1.0.4",
     "express-jwt": "^5.3.1",
     "firebase": "^6.0.2",
     "if-env": "^1.0.4",
@@ -31,6 +32,7 @@
     "moment": "^2.24.0",
     "mongoose": "^5.3.16",
     "react-chartjs-2": "^2.7.6",
+    "react-datepicker": "^2.5.0",
     "react-materialize": "^3.3.0"
   }
 }

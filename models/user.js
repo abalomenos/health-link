@@ -17,6 +17,9 @@ const UserSchema = new Schema({
   age: { type: Number, required: true},
   weight: { type: Number, required: true },
   height: { type: Number, required: true },
+  gender: { type: String/*, required: true */},
+  activity: { type: String/*, required: true */},
+  BMI: { type: Number/*, required: true */},
   water_goal: Number, 
   water_progress: [
     {
@@ -31,10 +34,13 @@ const UserSchema = new Schema({
     date: {type: Date}
     }
   ],
-  calories_goal: Number, 
-  calories_progress: [
+  intake_goal: Number, 
+  intake_progress: [
     {
-    metric: { type: Number },
+    calories: { type: Number },
+    protein: { type: Number },
+    fat: { type: Number },
+    carbs: { type: Number },
     date: {type: Date}
     }
   ],
