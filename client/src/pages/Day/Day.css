@@ -1,10 +1,4 @@
 
-.mainWrapper {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .containerDay {
     position: relative;
     background-color: rgb(221, 221, 221, 0.9);
