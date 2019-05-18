@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import {Bar, Pie, Line} from 'react-chartjs-2';
 import {Row, Col} from 'react-materialize';
 import API from "../../utils/API";
+import withAuth from './../../components/withAuth';
+import moment from "moment";
 
 // const firebaseConfig = {
 //   apiKey: "AIzaSyCCez8DBQCibI7u56xLHXEXeds8HYtKyNU",
@@ -30,33 +32,24 @@ class Day extends Component {
     sleep_goal: ""
   };
   componentDidMount() {
-    // Initialize Firebase
-    // firebase.initializeApp(firebaseConfig);
+    API.getUser(this.props.user.id).then(res => {
+      this.setState(
+        {
+          id: res.data._id,
+          name: res.data.name,
+          age: res.data.age,
+          water_goal: res.data.water_goal,
+          calorie_goal: res.data.calorie_goal,
+          exercise_goal: res.data.exercise_goal,
+          sleep_goal: res.data.sleep_goal,
+        }
+      )
+      console.log("hello" + res.data.name);
+      console.log(moment().subtract("days", 10).format("MM/DD/YYYY"));
+    });
   };
 
-  // getUser() {
-  //   API.getUser(firebase.auth().currentUser.uid)
-  //     .then(res =>
-  //       this.setState({
-  //         name: res.data.name,
-  //         id: firebase.auth().currentUser.uid,
-  //         date: Date.now(),
-  //         water_goal: res.data.water_goal,
-  //         calorie_goal: res.data.calorie_goal,
-  //         exercise_goal: res.data.exercise_goal,
-  //         sleep_goal: res.data.sleep_goal
-  //       })
-  //       )
-  // }
-
-  // signOut () {
-  //   firebase.auth().signOut().then(function(){}).catch(function(error) {
-  //     // Handle Errors here.
-  //     var errorCode = error.code;
-  //     alert(error.Message);
-
-  //   });
-  // }
+ 
 
   water = {
     labels: ["Water"],
@@ -117,6 +110,7 @@ class Day extends Component {
   render() {
     return (
       <div>
+        {/* <h1>{this.state.name}</h1> */}
         <Row>
         <Col className="s2 offset-s3 white-text">
           <Bar
@@ -154,4 +148,5 @@ class Day extends Component {
   }
 }
 
-export default Day;
+export default withAuth(Day);
+

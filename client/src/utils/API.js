@@ -13,20 +13,16 @@ export default {
   deleteUser: function(id) {
     return axios.delete("/api/users/" + id);
   },
-  // Saves a user to the database
-  saveUser: function(userInfo) {
-    return axios.post("/api/users", userInfo);
-  },
   // Updates a user in the database
   updateUser: function(id) {
     return axios.put("/api/users", + id);
   },
-  // signs in a user
-  signin: function() {
-    return axios.post("/signin");
-  },
   //signs up a user
-  signup: function() {
-    return axios.post("/signup");
-  }
+  signUpUser: (email, password, name, age, weight, height) => {
+    return axios.post('/api/users', {email: email, password: password, name: name, age: age, weight: weight, height: height});
+  },
+
+  // login: (email, password) => {
+  //   return axios.post('/api/users/login', {email: email, password: password});
+  // }
 };
