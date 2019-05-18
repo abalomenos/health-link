@@ -6,6 +6,7 @@ import Week from "./pages/Week";
 // import Week from "./pages/Week";
 import User from "./pages/User";
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const App = () => (
   <Router>
@@ -18,6 +19,7 @@ const App = () => (
         <Route exact path="/week" component={Week} />
         {/* <Route component={User} /> */}
       </Switch>
+      <Footer />
     </div>
   </Router>
 );
