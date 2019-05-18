@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import {Bar, Pie} from 'react-chartjs-2';
 import {Container, Row, Col, Modal, TextInput, Button, Icon} from 'react-materialize';
 import DatePicker from "react-datepicker";
+import API from "../../utils/API";
+import withAuth from './../../components/withAuth';
+import moment from "moment";
+
 
 import "react-datepicker/dist/react-datepicker.css";
 import './Day.css';
@@ -23,7 +27,14 @@ class Day extends Component {
       carbsCounter: 50,
       fatCounter: 40,
       caloriesCounter: 1500,
-      maxCalories:  2000
+      maxCalories:  2000,
+      name: "",
+      id: "",
+      date: Date.now(),
+      water_goal: "",
+      calorie_goal: "",
+      exercise_goal: "",
+      sleep_goal: ""
     };
     this.handleDateChange = this.handleDateChange.bind(this);
     this.addOneHour = this.addOneHour.bind(this);
@@ -33,8 +44,24 @@ class Day extends Component {
   }
 
   componentDidMount() {
-
+    API.getUser(this.props.user.id).then(res => {
+      this.setState(
+        {
+          id: res.data._id,
+          name: res.data.name,
+          age: res.data.age,
+          water_goal: res.data.water_goal,
+          calorie_goal: res.data.calorie_goal,
+          exercise_goal: res.data.exercise_goal,
+          sleep_goal: res.data.sleep_goal,
+        }
+      )
+      console.log("hello" + res.data.name);
+      console.log(moment().subtract("days", 10).format("MM/DD/YYYY"));
+    });
   };
+
+ 
 
   handleDateChange(date) {
     this.setState({
@@ -243,4 +270,5 @@ class Day extends Component {
   }
 }
 
-export default Day;
+export default withAuth(Day);
+

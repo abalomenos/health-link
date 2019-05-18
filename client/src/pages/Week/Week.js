@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import {Bar, Line} from 'react-chartjs-2';
 import {Container, Row, Col, Modal, TextInput, Button, Icon} from 'react-materialize';
+import API from "../../utils/API";
+import withAuth from './../../components/withAuth';
+import moment from "moment";
 
 import './Week.css';
+
 
 const backgroundImg ='./assets/images/background1.jpg';
 
@@ -16,9 +20,30 @@ class Week extends Component {
             caloriesCounter: [1500, 1600, 1650, 1800, 2000, 1650, 1500]
         };
     }
-
-    componentDidMount() {
-
+  
+      componentDidMount() {
+        API.getUser(this.props.user.id).then(res => {
+          this.setState(
+            {
+              id: res.data._id,
+              name: res.data.name,
+              age: res.data.age,
+              water_goal: res.data.water_goal,
+              calorie_goal: res.data.calorie_goal,
+              exercise_goal: res.data.exercise_goal,
+              sleep_goal: res.data.sleep_goal,
+            }
+          )
+          console.log("hello" + res.data.name);
+          console.log(moment().subtract("days", 10).format("MM/DD/YYYY"));
+        });
+      };
+  
+    handleInputChange = event => {
+      const { name, value } = event.target;
+      this.setState({
+        [name]: value
+      });
     };
     
     
@@ -185,4 +210,4 @@ class Week extends Component {
   
 
 
-export default Week;
+export default withAuth(Week);
