@@ -2,11 +2,12 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  name: { type: String, required: true },
+  firstName: { type: String, required: true },
+  lastName: { type: String, required: true },
   age: { type: Number, required: true},
   weight: { type: Number, required: true },
   height: { type: Number, required: true },
-  isMale: { type: Boolean, default: false, required: true },
+  gender: { type: String, required: true },
   activity: { type: String, required: true },
   BMI: { type: Number, required: true },
   water_goal: Number, 
