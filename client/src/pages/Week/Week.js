@@ -13,8 +13,6 @@ class Week extends Component {
             sleepCounter: [8, 7, 7, 6, 8, 9, 5],
             waterCounter: [2, 3, 4, 5, 5, 6, 4],
             workoutConter: [4, 0, 2, 1, 0, 2, 0],
-            carbsCounter: 50,
-            fatCounter: 40,
             caloriesCounter: [1500, 1600, 1650, 1800, 2000, 1650, 1500]
         };
     }
