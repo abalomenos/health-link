@@ -9,7 +9,7 @@ import './Day.css';
 // import API from "../../utils/API";
 
 let workoutImg = "./assets/images/workout1.jpg";
-const backgroundImg ='./assets/images/background1.jpg'
+const backgroundImg ='./assets/images/background1.jpg';
 
 class Day extends Component {
 

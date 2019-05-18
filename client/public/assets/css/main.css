@@ -13,6 +13,9 @@ body {
 .mainWrapper {
     min-height: calc(100vh - 305px);
     padding: 50px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 Footer {
