@@ -9,6 +9,9 @@ import React, { Component } from "react";
 import { Bar } from 'react-chartjs-2';
 import { Doughnut, Bubble } from 'react-chartjs-2';
 import {Row, Col} from 'react-materialize';
+import API from "../../utils/API";
+import withAuth from './../../components/withAuth';
+import moment from "moment";
 
 
 class Week extends Component {
@@ -47,10 +50,23 @@ class Week extends Component {
       }
 
   
-    componentDidMount() {
-      // Initialize Firebase
-      // firebase.initializeApp(firebaseConfig);
-    };
+      componentDidMount() {
+        API.getUser(this.props.user.id).then(res => {
+          this.setState(
+            {
+              id: res.data._id,
+              name: res.data.name,
+              age: res.data.age,
+              water_goal: res.data.water_goal,
+              calorie_goal: res.data.calorie_goal,
+              exercise_goal: res.data.exercise_goal,
+              sleep_goal: res.data.sleep_goal,
+            }
+          )
+          console.log("hello" + res.data.name);
+          console.log(moment().subtract("days", 10).format("MM/DD/YYYY"));
+        });
+      };
   
     handleInputChange = event => {
       const { name, value } = event.target;
@@ -128,4 +144,4 @@ class Week extends Component {
   
 
 
-export default Week;
+export default withAuth(Week);
