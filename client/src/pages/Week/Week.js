@@ -69,8 +69,8 @@ class Week extends Component {
                                                 fill: false,
                                                 borderColor: '#bebebe',
                                                 backgroundColor: '#00C864',
-                                                // hoverBackgroundColor: '#99ADCC',
-                                                // hoverBorderColor: '#99ADCC',
+                                                hoverBorderColor: '#bebebe',
+                                                hoverBackgroundColor: '#00FF80',
                                                 yAxisID: 'y-axis-1',
                                                 data: [this.state.workoutConter[0], this.state.workoutConter[1], this.state.workoutConter[2], this.state.workoutConter[3], this.state.workoutConter[4], this.state.workoutConter[5], this.state.workoutConter[6]]
                                             },
@@ -80,8 +80,8 @@ class Week extends Component {
                                                 fill: false,
                                                 borderColor: '#bebebe',
                                                 backgroundColor: '#0077BE',
-                                                // hoverBackgroundColor: '#4DBEFF',
-                                                // hoverBorderColor: '#4DBEFF',
+                                                hoverBorderColor: '#bebebe',
+                                                hoverBackgroundColor: '#4DBEFF',
                                                 yAxisID: 'y-axis-1',
                                                 data: [this.state.waterCounter[0], this.state.waterCounter[1], this.state.waterCounter[2], this.state.waterCounter[3], this.state.waterCounter[4], this.state.waterCounter[5], this.state.waterCounter[6]]
                                             },
@@ -91,8 +91,8 @@ class Week extends Component {
                                                 fill: false,
                                                 borderColor: '#bebebe',
                                                 backgroundColor: '#5f6b7f',
-                                                // hoverBackgroundColor: '#71B37C',
-                                                // hoverBorderColor: '#71B37C',
+                                                hoverBorderColor: '#bebebe',
+                                                hoverBackgroundColor: '#BFD8FF',
                                                 yAxisID: 'y-axis-1',
                                                 data: [this.state.sleepCounter[0], this.state.sleepCounter[1], this.state.sleepCounter[2], this.state.sleepCounter[3], this.state.sleepCounter[4], this.state.sleepCounter[5], this.state.sleepCounter[6]]
                                             },
@@ -101,12 +101,13 @@ class Week extends Component {
                                                 data: [this.state.caloriesCounter[0], this.state.caloriesCounter[1], this.state.caloriesCounter[2], this.state.caloriesCounter[3], this.state.caloriesCounter[4], this.state.caloriesCounter[5], this.state.caloriesCounter[6]],
                                                 type: 'line',
                                                 fill: false,
-                                                borderColor: '#bebebe',
-                                                backgroundColor: '#EC932F',
-                                                pointBorderColor: '#EC932F',
-                                                pointBackgroundColor: '#EC932F',
-                                                pointHoverBackgroundColor: '#EC932F',
-                                                pointHoverBorderColor: '#EC932F',
+                                                borderWidth: 2,
+                                                borderColor: '#E0A765',
+                                                backgroundColor: '#E0A765',
+                                                pointBorderColor: '#805F39',
+                                                pointBackgroundColor: '#805F39',
+                                                pointHoverBorderColor: '#CC985C',
+                                                pointHoverBackgroundColor: '#CC985C',
                                                 yAxisID: 'y-axis-2'
                                             }
                                         ]
@@ -205,7 +206,11 @@ class Week extends Component {
                                         plugins: {
                                           datalabels: {
                                             display: true,
-                                            color: 'red'
+                                            clamp: false,
+                                            anchor: 'end',
+                                            align: 'end',
+                                            offset: 2,
+                                            color: 'black'
                                          },
                                         }
                                     }}
