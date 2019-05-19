@@ -175,6 +175,7 @@ class Day extends Component {
                 maintainAspectRatio: true,
                 legend: {
                   labels: {
+                      boxWidth: 0,
                       fontColor: "black",
                       fontSize: 16
                   }
@@ -199,14 +200,14 @@ class Day extends Component {
                           beginAtZero:true,
                           min: 0,
                           max: 8,
-                          fontColor: 'Black'
+                          fontColor: 'black'
                       }
                     }]
                 },
                 plugins: {
                   datalabels: {
                     display: true,
-                    color: '#193f55'
+                    color: 'black'
                  }
                 }
               }}
@@ -268,7 +269,7 @@ class Day extends Component {
                   plugins: {
                     datalabels: {
                       display: true,
-                      color: 'white'
+                      color: 'black'
                   }
                   }
                 }}
@@ -307,6 +308,7 @@ class Day extends Component {
                   maintainAspectRatio: true,
                   legend: {
                     labels: {
+                        boxWidth: 0,
                         fontColor: "black",
                         fontSize: 16
                     }
@@ -338,7 +340,7 @@ class Day extends Component {
                   plugins: {
                     datalabels: {
                       display: true,
-                      color: '#195738'
+                      color: 'black'
                   }
                   }
                 }}
@@ -369,6 +371,7 @@ class Day extends Component {
                   maintainAspectRatio: true,
                   legend: {
                     labels: {
+                        boxWidth: 0,
                         fontColor: "black",
                         fontSize: 16
                     }
@@ -400,7 +403,7 @@ class Day extends Component {
                   plugins: {
                     datalabels: {
                       display: true,
-                      color: '#171A1F'
+                      color: 'black'
                   }
                   }
                 }}

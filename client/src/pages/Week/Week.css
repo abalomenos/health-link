@@ -2,4 +2,5 @@
 .containerWeek {
     position: relative;
     background-color: rgb(221, 221, 221, 0.9);
+    padding: 20px;
 }

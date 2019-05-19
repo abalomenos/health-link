@@ -2,6 +2,7 @@
 .containerDay {
     position: relative;
     background-color: rgb(221, 221, 221, 0.9);
+    padding: 20px;
 }
 
 .divider {
@@ -25,6 +26,9 @@
     width: 100%;
     background-color: rgb(221, 221, 221, 1);
     z-index: 2;
+    border-color: #aaaaaa;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .sectionBG img {

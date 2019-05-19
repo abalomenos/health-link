@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Container} from 'react-materialize';
+import {Container, Row, Col} from 'react-materialize';
 
 const backgroundImg ='./assets/images/background1.jpg'
 
@@ -15,7 +15,13 @@ class About extends Component {
     return (
       <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
         <Container className="containerAbout">
-        
+          <Row>
+            <Col>
+            
+              
+            
+            </Col>
+          </Row>
         </Container>
       </div>
     );
