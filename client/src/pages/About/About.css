@@ -1,0 +1,11 @@
+ 
+ .containerAbout {
+    height: 100%  !important;
+ }
+
+.carousel-wrapper,
+.carousel,
+.carousel > .slider-wrapper,
+.carousel > .slider-wrapper > .slider {
+  height: 100%;
+}

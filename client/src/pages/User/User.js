@@ -132,7 +132,7 @@ class User extends Component {
       <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
         <Container className="containerUser">
           <Row>
-            <Col className="s12 black-text center-align">
+            <Col className="s8 offset-s2 black-text center-align">
               Update Profile
               <hr/>
             </Col>
