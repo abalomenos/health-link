@@ -1,6 +1,5 @@
 import decode from 'jwt-decode';
 import axios from 'axios';
-import API from '../utils/API'
 export default class AuthService {
 
     login = (email, password) => {

@@ -1,0 +1,21 @@
+
+.containerUser {
+    position: relative;
+    background-color: rgb(221, 221, 221, 0.9);
+    max-width: 400px;
+    padding: 40px;
+}
+
+.userForm {
+    position: relative;
+    background-color: rgb(221, 221, 221, 1);
+}
+
+@media only screen and (max-width: 600px) {
+
+    .containerUser {
+        min-width: 100%;
+        padding: 10px;
+        margin: 0px;
+    }
+}

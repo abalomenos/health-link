@@ -1,13 +1,30 @@
 import React, { Component } from "react";
 import { Navbar, NavItem, Modal, Button, TextInput, Icon} from 'react-materialize';
+import AuthService from '../AuthService';
+import API from '../../utils/API';
+import { withRouter } from 'react-router-dom';
 
 import './Nav.css';
 
 class Nav extends Component {
-    state = {
+
+  constructor(props) {
+    super(props);
+    this.Auth = new AuthService();
+    this.state = {
       open: false,
-      width: window.innerWidth
+      width: window.innerWidth,
+      name: "",
+      id: ""
     };
+  }
+
+
+
+  
+  componentDidMount() {
+    window.addEventListener("resize", this.updateWidth);
+  }
   
     updateWidth = () => {
       const newState = { width: window.innerWidth };
@@ -18,43 +35,106 @@ class Nav extends Component {
   
       this.setState(newState);
     };
+
+    handleChange = event => {
+      const {name, value} = event.target;
+      this.setState({
+          [name]: value
+      });
+      console.log(event.target);
+      console.log(this.state);
+    };
   
+    signIn() {
+      this.Auth.login(this.state.email, this.state.password)
+        .then(res => {
+          // once user is logged in
+          // take them to their profile page
+          this.props.history.replace(`/day`);
+        })
+        .catch(err => {
+          alert(err.response.data.message)
+        });
+    }
+  
+    handleFormLoginSubmit = event => {
+      event.preventDefault();
+      this.signIn();
+    }
+  
+    handleFormSignupSubmit = event => {
+      event.preventDefault();
+      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height)
+        .then(res => {
+          // once the user has signed up
+          // log them in
+          this.signIn();
+        })
+        .catch(err => alert(err));
+    }
+    
     toggleNav = () => {
       this.setState({ open: !this.state.open });
     };
-  
-    componentDidMount() {
-      window.addEventListener("resize", this.updateWidth);
+
+    componentWillMount() {
+      if (this.Auth.loggedIn() && this.props.history.location.pathname === '/') {
+        this.props.history.replace('/day');
+        console.log("history " + JSON.stringify(this.props.history));
+      }
     }
   
     componentWillUnmount() {
       window.removeEventListener("resize", this.updateWidth);
     }
+
+    showNavigation = () => {
+      if (this.Auth.loggedIn()) {
+          return (
+            <Navbar brand={<a className="navLogoText" href="/">Health Link</a>} alignLinks="right">
+              <NavItem className="navText" href="/day">Day</NavItem>
+              <NavItem className="navText" href="/week">Week</NavItem>
+              <NavItem className="navText" href="/user">Profile</NavItem>
+              <NavItem className="navText" href="/" onClick={() => this.Auth.logout()}>Logout</NavItem>
+            </Navbar>
+          );
+      } else {
+          return (
+            <div>
+              <Navbar brand={<a className="navLogoText" href="/">Health Link</a>} alignLinks="right">
+              <Modal trigger={<NavItem className="navText" href="">Login</NavItem>}>
+                <form onSubmit={this.handleFormLoginSubmit}>
+                  <TextInput email validate label="Email" name = "email" onChange = {this.handleChange}/>
+                  <TextInput password label="Password" name = "password" onChange = {this.handleChange}/>
+                  <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
+                </form>
+            </Modal>
+    
+            <Modal trigger={<NavItem className="navText" href="">Create Profile</NavItem>}>
+              <form onSubmit={this.handleFormSignupSubmit}>
+                <TextInput label="Name" name = "name" onChange = {this.handleChange}/>
+                <TextInput label="Age" name = "age" onChange = {this.handleChange}/>
+                <TextInput label="Height (inches)" name = "height" onChange = {this.handleChange}/>
+                <TextInput label="Weight (lbs)" name = "weight" onChange = {this.handleChange}/>
+                <TextInput email validate label="Email" name = "email" onChange = {this.handleChange}/>
+                <TextInput password label="Password" name = "password" onChange = {this.handleChange}/>
+                <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
+              </form>
+            </Modal>
+            </Navbar>
+          </div>
+          );
+      }
+  };
   
     render() {
       return (
         <div>
-
-        <Navbar brand={<a className="navText" href="#!"> Health Link</a>} alignLinks="right">
-          <Modal trigger={<NavItem className="navText">Login</NavItem>}>
-            <TextInput email validate label="Email" />
-            <TextInput password label="Password" />
-            <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
-          </Modal>
-  
-          <Modal trigger={<NavItem className="navText">Register</NavItem>}>
-            <TextInput label="First Name" />
-            <TextInput email validate label="Email" />
-            <TextInput password label="Password" />
-            <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
-          </Modal>
-  
-        </Navbar>
+        {this.showNavigation()}
         
       </div>
       );
     }
   }
   
-  export default Nav;
-  
+  export default withRouter(Nav);

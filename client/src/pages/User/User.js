@@ -1,11 +1,15 @@
 import React, { Component } from "react";
-import { Row, Col, Button, TextInput, Icon, Select } from "react-materialize";
-// import { Col, Row, Container } from "../../components/Grid";
-// import Jumbotron from "../../components/Jumbotron";
+import { Container, Row, Col, Button, TextInput, Icon, Select } from "react-materialize";
 import API from "../../utils/API";
-// import { List, ListItem } from "../../components/List";
-// import { Input, FormBtn } from "../../components/Form";
+import withAuth from './../../components/withAuth';
+
+import './User.css';
+
 const health = require("healthstats");
+
+// Images
+const backgroundImg ='./assets/images/background1.jpg';
+
 
 class User extends Component {
   state = {
@@ -125,100 +129,98 @@ class User extends Component {
 
   render() {
     return (
-      <Row>
-        <Col size="md-12">
-          <form>
-            <TextInput
-              value={this.state.firstName}
-              onChange={this.handleInputChange}
-              name="firstName"
-              label="First Name"
-            />
-            <TextInput
-              value={this.state.lastName}
-              onChange={this.handleInputChange}
-              name="lastName"
-              label="Last Name"
-            />
-            <TextInput
-              value={this.state.age}
-              onChange={this.handleInputChange}
-              name="age"
-              label="Age"
-            />
-            <TextInput
-              value={this.state.weight}
-              onChange={this.handleInputChange}
-              name="weight"
-              label="Weight"
-            />
-            <TextInput
-              value={this.state.feet}
-              onChange={this.handleInputChange}
-              name="feet"
-              label="Feet"
-            />
-            <TextInput
-              value={this.state.inches}
-              onChange={this.handleInputChange}
-              name="inches"
-              label="Inches"
-            />
-            <Select value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level">
-              <option value="sedentary">Sedentary</option>
-              <option value="light">Light</option>
-              <option value="moderate">Moderate</option>
-              <option value="veryActive">Very Active</option>
-              <option value="extremelyActive">Extremely Active</option>
-            </Select>
-            <Button type="submit" waves="light" onClick={this.handleFormSubmit}>
-              Submit<Icon right>send</Icon>
-            </Button>
+      <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
+        <Container className="containerUser">
+          <Row>
+            <Col className="s12 black-text center-align">
+              Update Profile
+              <hr/>
+            </Col>
+          </Row>
+          <form className="userForm">
+          <Row className="userFormSection">
+            <Col className="s12 center-align">
+                <TextInput
+                  value={this.state.firstName}
+                  onChange={this.handleInputChange}
+                  name="firstName"
+                  label="First Name"
+                />
+              </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                
+                <TextInput
+                  value={this.state.lastName}
+                  onChange={this.handleInputChange}
+                  name="lastName"
+                  label="Last Name"
+                />
+                </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                <TextInput
+                  value={this.state.age}
+                  onChange={this.handleInputChange}
+                  name="age"
+                  label="Age"
+                />
+                </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                <TextInput
+                  value={this.state.weight}
+                  onChange={this.handleInputChange}
+                  name="weight"
+                  label="Weight"
+                />
+                </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                <TextInput
+                  value={this.state.feet}
+                  onChange={this.handleInputChange}
+                  name="feet"
+                  label="Feet"
+                />
+                </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                <TextInput
+                  value={this.state.inches}
+                  onChange={this.handleInputChange}
+                  name="inches"
+                  label="Inches"
+                />
+                </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                <Select value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level">
+                  <option value="sedentary">Sedentary</option>
+                  <option value="light">Light</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="veryActive">Very Active</option>
+                  <option value="extremelyActive">Extremely Active</option>
+                </Select>
+                </Col>
+            </Row>
+            <Row>
+              <Col className="s12 center-align">
+                <Button type="submit" waves="light" onClick={this.handleFormSubmit}>
+                  Update<Icon right>send</Icon>
+                </Button>
+              
+            </Col>
+          </Row>
           </form>
-          {/* 
-            <Jumbotron>
-              <h1>Enter User Info</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Full Name"
-              />
-              <Input
-                value={this.state.age}
-                onChange={this.handleInputChange}
-                name="age"
-                placeholder="Age"
-              />
-              <Input
-                value={this.state.weight}
-                onChange={this.handleInputChange}
-                name="weight"
-                placeholder="Weight"
-              />
-              <Input
-                value={this.state.feet}
-                onChange={this.handleInputChange}
-                name="feet"
-                placeholder="Feet"
-              />
-              <Input
-                value={this.state.inches}
-                onChange={this.handleInputChange}
-                name="inches"
-                placeholder="Inches"
-              />
-              <FormBtn
-                disabled={!(this.state.name && this.state.age && this.state.weight)}
-                onClick={this.handleFormSubmit}
-              >
-                Create Profile!
-              </FormBtn>
-            </form> */}
-        </Col>
-      </Row>
+        </Container>
+      </div>
     );
   }
 }
