@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import {Bar, Line} from 'react-chartjs-2';
-import {Container, Row, Col, Modal, TextInput, Button, Icon} from 'react-materialize';
+import {Bar} from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
+import {Container, Row, Col} from 'react-materialize';
 import API from "../../utils/API";
 import withAuth from './../../components/withAuth';
 import moment from "moment";
@@ -33,9 +34,9 @@ class Week extends Component {
               exercise_goal: res.data.exercise_goal,
               sleep_goal: res.data.sleep_goal,
             }
-          )
+          );
           console.log("hello" + res.data.name);
-          console.log(moment().subtract("days", 10).format("MM/DD/YYYY"));
+          console.log(moment().subtract(10,"days").format("MM/DD/YYYY"));
         });
       };
   
@@ -52,6 +53,12 @@ class Week extends Component {
             <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
                     <Container className="containerWeek">
                         <Row>
+                            <Col className="s2 offset-s5 black-text center-align">
+                            Weekly Stats
+                            <hr/>
+                            </Col>
+                        </Row>
+                        <Row>
                             <Col className="s10 offset-s1 black-text center-align">
                                 <Bar
                                     data={{
@@ -60,23 +67,21 @@ class Week extends Component {
                                                 label: "Workout",
                                                 type: 'bar',
                                                 fill: false,
-                                                borderColor: '#5f6b7f',
-                                                backgroundColor: '#5f6b7f',
-                                                pointBorderColor: '#5f6b7f',
-                                                pointBackgroundColor: '#5f6b7f',
-                                                pointHoverBackgroundColor: '#5f6b7f',
-                                                pointHoverBorderColor: '#5f6b7f',
-                                                yAxisID: 'y-axis-3',
+                                                borderColor: '#bebebe',
+                                                backgroundColor: '#00C864',
+                                                // hoverBackgroundColor: '#99ADCC',
+                                                // hoverBorderColor: '#99ADCC',
+                                                yAxisID: 'y-axis-1',
                                                 data: [this.state.workoutConter[0], this.state.workoutConter[1], this.state.workoutConter[2], this.state.workoutConter[3], this.state.workoutConter[4], this.state.workoutConter[5], this.state.workoutConter[6]]
                                             },
                                             {
                                                 label: "Water",
                                                 type: 'bar',
                                                 fill: false,
-                                                backgroundColor: 'rgb(0, 119, 190)',
-                                                borderColor: 'rgb(0, 119, 190',
-                                                hoverBackgroundColor: '#71B37C',
-                                                hoverBorderColor: '#71B37C',
+                                                borderColor: '#bebebe',
+                                                backgroundColor: '#0077BE',
+                                                // hoverBackgroundColor: '#4DBEFF',
+                                                // hoverBorderColor: '#4DBEFF',
                                                 yAxisID: 'y-axis-1',
                                                 data: [this.state.waterCounter[0], this.state.waterCounter[1], this.state.waterCounter[2], this.state.waterCounter[3], this.state.waterCounter[4], this.state.waterCounter[5], this.state.waterCounter[6]]
                                             },
@@ -84,10 +89,10 @@ class Week extends Component {
                                                 label: "Sleep",
                                                 type: 'bar',
                                                 fill: false,
-                                                backgroundColor: 'rgb(20, 19, 190)',
-                                                borderColor: 'rgb(20, 19, 190',
-                                                hoverBackgroundColor: '#71B37C',
-                                                hoverBorderColor: '#71B37C',
+                                                borderColor: '#bebebe',
+                                                backgroundColor: '#5f6b7f',
+                                                // hoverBackgroundColor: '#71B37C',
+                                                // hoverBorderColor: '#71B37C',
                                                 yAxisID: 'y-axis-1',
                                                 data: [this.state.sleepCounter[0], this.state.sleepCounter[1], this.state.sleepCounter[2], this.state.sleepCounter[3], this.state.sleepCounter[4], this.state.sleepCounter[5], this.state.sleepCounter[6]]
                                             },
@@ -96,7 +101,7 @@ class Week extends Component {
                                                 data: [this.state.caloriesCounter[0], this.state.caloriesCounter[1], this.state.caloriesCounter[2], this.state.caloriesCounter[3], this.state.caloriesCounter[4], this.state.caloriesCounter[5], this.state.caloriesCounter[6]],
                                                 type: 'line',
                                                 fill: false,
-                                                borderColor: '#EC932F',
+                                                borderColor: '#bebebe',
                                                 backgroundColor: '#EC932F',
                                                 pointBorderColor: '#EC932F',
                                                 pointBackgroundColor: '#EC932F',
@@ -111,10 +116,14 @@ class Week extends Component {
                                     options={{
                                         maintainAspectRatio: true,
                                         legend: {
-                                        labels: {
-                                            fontColor: "black",
-                                            fontSize: 16
-                                        }
+                                            display: true,
+                                            position: 'right',
+                                            labels: {
+                                                boxWidth: 20,
+                                                padding:  10,
+                                                fontColor: "black",
+                                                fontSize: 16
+                                            }
                                         },
                                         labels: ["Monday", "Tuesday", "Wednesdday", "Thursday", "Friday", "Saturday", "Sundsay"],
                                         responsive: true,
@@ -131,7 +140,7 @@ class Week extends Component {
                                             {
                                                 display: true,
                                                 gridLines: {
-                                                display: true
+                                                    display: true
                                                 },
                                                 labels: ["Monday", "Tuesday", "Wednesdday", "Thursday", "Friday", "Saturday", "Sundsay"],
                                             }
@@ -151,7 +160,7 @@ class Week extends Component {
                                                 ticks: {
                                                     beginAtZero:true,
                                                     min: 0,
-                                                    max: 12,
+                                                    max: 14,
                                                     fontColor: 'Black'
                                                 }
                                             },
@@ -167,36 +176,43 @@ class Week extends Component {
                                                     show: true
                                                 },
                                                 ticks: {
-                                                    suggestedMin: 1000,
-                                                    suggestedMax: 2500,
-                                                    fontColor: 'Black'
-                                                }
-                                            },
-                                            {
-                                                type: 'linear',
-                                                display: true,
-                                                position: 'left',
-                                                id: 'y-axis-3',
-                                                gridLines: {
-                                                    display: false
-                                                },
-                                                labels: {
-                                                    show: true
-                                                },
-                                                ticks: {
-                                                    beginAtZero: false,
                                                     suggestedMin: 0,
-                                                    suggestedMax: 4,
+                                                    suggestedMax: 2200,
                                                     fontColor: 'Black'
                                                 }
                                             }
+                                            // ,
+                                            // {
+                                            //     type: 'linear',
+                                            //     display: true,
+                                            //     position: 'left',
+                                            //     id: 'y-axis-3',
+                                            //     gridLines: {
+                                            //         display: false
+                                            //     },
+                                            //     labels: {
+                                            //         show: true
+                                            //     },
+                                            //     ticks: {
+                                            //         beginAtZero: false,
+                                            //         suggestedMin: 0,
+                                            //         suggestedMax: 6,
+                                            //         fontColor: 'Black'
+                                            //     }
+                                            // }
                                             ]
+                                        },
+                                        plugins: {
+                                          datalabels: {
+                                            display: true,
+                                            color: 'red'
+                                         },
                                         }
                                     }}
                                     plugins={{
                                         afterDraw: (chartInstance, easing) => {
                                             const ctx = chartInstance.chart.ctx;
-                                            ctx.fillText("Weekly Stats", 100, 100);
+                                            ctx.fillText("Weekly Stats", 920, 200);
                                         }
                                     }}
                                 />

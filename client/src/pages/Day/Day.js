@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import {Bar, Pie} from 'react-chartjs-2';
+import 'chartjs-plugin-datalabels';
 import {Container, Row, Col, Modal, TextInput, Button, Icon} from 'react-materialize';
 import DatePicker from "react-datepicker";
 import API from "../../utils/API";
@@ -10,10 +11,13 @@ import moment from "moment";
 import "react-datepicker/dist/react-datepicker.css";
 import './Day.css';
 
-// import API from "../../utils/API";
-
-let workoutImg = "./assets/images/workout1.jpg";
+// Images
+const workoutImg = "./assets/images/workout1.jpg";
+const waterImg = "./assets/images/water1.jpg";
+const sleepImg = "./assets/images/sleep1.jpg";
+const nutritionImg = "./assets/images/nutrition1.jpg";
 const backgroundImg ='./assets/images/background1.jpg';
+
 
 class Day extends Component {
 
@@ -22,6 +26,7 @@ class Day extends Component {
     this.state = {
       startDate: new Date(),
       sleepCounter: 8,
+      workoutCounter: 2,
       waterCounter: 1,
       proteinCounter: 90,
       carbsCounter: 50,
@@ -37,8 +42,10 @@ class Day extends Component {
       sleep_goal: ""
     };
     this.handleDateChange = this.handleDateChange.bind(this);
-    this.addOneHour = this.addOneHour.bind(this);
-    this.subOneHour = this.subOneHour.bind(this);
+    this.addOneHourS = this.addOneHourS.bind(this);
+    this.subOneHourS = this.subOneHourS.bind(this);
+    this.addOneHourW = this.addOneHourW.bind(this);
+    this.subOneHourW = this.subOneHourW.bind(this);
     this.addOneWater = this.addOneWater.bind(this);
     this.subOneWater = this.subOneWater.bind(this);
   }
@@ -55,9 +62,9 @@ class Day extends Component {
           exercise_goal: res.data.exercise_goal,
           sleep_goal: res.data.sleep_goal,
         }
-      )
-      console.log("hello" + res.data.name);
-      console.log(moment().subtract("days", 10).format("MM/DD/YYYY"));
+      );
+      console.log(res.data);
+      console.log(moment().subtract(10,"days").format("MM/DD/YYYY"));
     });
   };
 
@@ -69,7 +76,7 @@ class Day extends Component {
     });
   }
 
-  addOneHour() {
+  addOneHourS() {
     this.setState((prevState) => {
       return {
         sleepCounter : prevState.sleepCounter + 1
@@ -77,10 +84,26 @@ class Day extends Component {
      });
   }
 
-  subOneHour() {
+  subOneHourS() {
     this.setState((prevState) => {
       return {
         sleepCounter: prevState.sleepCounter === 0 ? prevState.sleepCounter: prevState.sleepCounter - 1
+        };
+     });
+  }
+
+  addOneHourW() {
+    this.setState((prevState) => {
+      return {
+        workoutCounter : prevState.workoutCounter + 1
+        };
+     });
+  }
+
+  subOneHourW() {
+    this.setState((prevState) => {
+      return {
+        workoutCounter: prevState.workoutCounter === 0 ? prevState.workoutCounter: prevState.workoutCounter - 1
         };
      });
   }
@@ -103,13 +126,17 @@ class Day extends Component {
      });
   }
   
-
   render() {
     return (
       <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
         <Container className="containerDay">
           <Row>
-          
+            <Col className="s2 offset-s5 black-text center-align">
+              Daily Stats
+              <hr/>
+            </Col>
+          </Row>
+          <Row>
             <Col className="s4 offset-s1 black-text center-align">
               <DatePicker
                 selected={this.state.startDate}
@@ -123,17 +150,22 @@ class Day extends Component {
             </Col>
             
           </Row>
-          <div className="divider"></div>
+          
           <Row>
-          <Col className="m4 offset-m1 s10 offset-s1 black-text center-align">
-            <div className="divider"></div>
+          <hr/>
+          
+          <Col className="m4 offset-m1 s10 offset-s1 black-text center-align graphContainer">
+            <div className="sectionBG">
+              <img src={waterImg} alt="Water" />
+            </div>
+            <div className="sectionData">
             <Bar
               data={{
                 labels: ["Cups (1 cup = 8 oz.)"],
                 datasets: [{
                   label: "Water Consumption",
-                  backgroundColor: 'rgb(0, 119, 190)',
-                  borderColor: 'rgb(0, 119, 190)',
+                  borderColor: '#bebebe',
+                  backgroundColor: '#0077BE',
                   data: [this.state.waterCounter]
                 }]
               }}
@@ -152,7 +184,17 @@ class Day extends Component {
                   bodyFontColor: "white"
                 },
                 scales: {
+                  xAxes: [{
+                    display: true,
+                    gridLines: {
+                      display: false
+                    }
+                  }],
                   yAxes: [{
+                      display: false,
+                        gridLines: {
+                          display: false
+                      },
                       ticks: {
                           beginAtZero:true,
                           min: 0,
@@ -160,105 +202,213 @@ class Day extends Component {
                           fontColor: 'Black'
                       }
                     }]
+                },
+                plugins: {
+                  datalabels: {
+                    display: true,
+                    color: '#193f55'
+                 }
                 }
               }}
             />
             <br/>
             <div className="btn red waves-effect" onClick={this.subOneWater}>-</div>
             <div className="btn green waves-effect" onClick={this.addOneWater}>+</div>
+            </div>
           </Col>
-          <Col className="m4 offset-m2 s10 offset-s1 black-text center-align">
-            <div className="divider"></div>
-            <Pie
-              width={100}
-              height={100}
-              data={{
-                labels: ["Protein", "Carbs", "Fat"],
-                datasets: [{
-                  data: [this.state.proteinCounter, this.state.carbsCounter, this.state.fatCounter],
-                  backgroundColor : [
-                    "rgb(246,148,33)", "rgb(169,168,173)", "rgb(238,30,37)"
-                  ]
-                }]
-              }}
-              options={{
-                maintainAspectRatio: true,
-                legend: {
-                  labels: {
-                      fontColor: "black",
-                      fontSize: 16
+          <Col className="m4 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+            <div className="sectionBG pieBG">
+              <img src={nutritionImg} alt="Nutrition" />
+            </div>
+            <div className="sectionData">
+              <div className="chartTitle">
+                Nutrition Facts
+              </div>
+              <Pie
+                data={{
+                  labels: ["Protein", "Carbs", "Fat"],
+                  datasets: [{
+                    data: [this.state.proteinCounter, this.state.carbsCounter, this.state.fatCounter],
+                    borderColor: '#bebebe',
+                    backgroundColor : ["#F69421", "#A9A9AA", "#FF6E70"]
+                  }]
+                }}
+                width={100}
+                height={100}
+                options={{
+                  maintainAspectRatio: true,
+                  legend: {
+                    display: true,
+                    position: 'right',
+                    labels: {
+                        boxWidth: 10,
+                        padding:  10,
+                        fontColor: "black",
+                        fontSize: 14
+                    }
+                  },
+                  tooltips: {
+                    backgroundColor: "black",
+                    bodyFontColor: "white"
+                  },
+                  scales: {
+                    xAxes: [{
+                      display: false,
+                      gridLines: {
+                        display: false
+                      }
+                    }],
+                    yAxes: [{
+                        display: false,
+                          gridLines: {
+                            display: false
+                        }
+                      }]
+                  },
+                  plugins: {
+                    datalabels: {
+                      display: true,
+                      color: 'white'
                   }
-                },
-                tooltips: {
-                  backgroundColor: "black",
-                  bodyFontColor: "white"
-                }
-              }}
-            />
-            <br/>
-            <Modal trigger={<div className="btn green waves-effect">Add Meal</div>}>
-              <TextInput meal validate label="Meal" />
-              <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
-            </Modal>
+                  }
+                }}
+              />
+              
+              <br/>
+              <div className="nutritionMenu">
+                <Modal trigger={<div className="btn green waves-effect">Add Meal</div>}>
+                  <TextInput label="Meal" />
+                  <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
+                </Modal>
+              </div>
+            </div>
           </Col>
           </Row>
           <Row>
-          <Col className="m4 offset-m1 s10 offset-s1 black-text center-align workoutContainer">
-            <div className="divider"></div>
+          <Col className="m4 offset-m1 s10 offset-s1 black-text center-align graphContainer">
             
-            <div className="section">
-              Workout
+            <div className="sectionBG">
               <img src={workoutImg} alt="Workout" />
             </div>
-            <div className="section">
+            <div className="sectionData">
+              <Bar
+                data={{
+                  labels: ["Hours"],
+                  datasets: [{
+                    label: "Workout Time",
+                    borderColor: '#bebebe',
+                    backgroundColor: '#00C864',
+                    data: [this.state.workoutCounter]
+                  }]
+                }}
+                width={100}
+                height={100}
+                options={{
+                  maintainAspectRatio: true,
+                  legend: {
+                    labels: {
+                        fontColor: "black",
+                        fontSize: 16
+                    }
+                  },
+                  tooltips: {
+                    backgroundColor: "black",
+                    bodyFontColor: "white"
+                  },
+                  scales: {
+                    xAxes: [{
+                      display: true,
+                      gridLines: {
+                        display: false
+                      }
+                    }],
+                    yAxes: [{
+                        display: false,
+                        gridLines: {
+                          display: false
+                        },
+                        ticks: {
+                            beginAtZero:true,
+                            suggestedMin: 0,
+                            suggestedMax: 6,
+                            fontColor: 'black'
+                        }
+                      }]
+                  },
+                  plugins: {
+                    datalabels: {
+                      display: true,
+                      color: '#195738'
+                  }
+                  }
+                }}
+              />
             <br/>
-            <label>
-              <input type="checkbox" className="filled-in" />
-              <span>Yes</span>
-            </label>
+              <div className="btn red waves-effect" onClick={this.subOneHourW}>-</div>
+              <div className="btn green waves-effect" onClick={this.addOneHourW}>+</div>
             </div>
           </Col>
-          <Col className="m4 offset-m2 s10 offset-s1 black-text center-align infoSection">
-            <div className="divider"></div>
-            <Bar
-              data={{
-                labels: ["Hours"],
-                datasets: [{
-                  label: "Sleep Last Night",
-                  backgroundColor: 'rgb(0, 200, 100)',
-                  borderColor: 'rgb(0, 200, 100)',
-                  data: [this.state.sleepCounter]
-                }]
-              }}
-              width={1}
-              height={1}
-              options={{
-                maintainAspectRatio: true,
-                legend: {
-                  labels: {
-                      fontColor: "black",
-                      fontSize: 16
-                  }
-                },
-                tooltips: {
-                  backgroundColor: "black",
-                  bodyFontColor: "white"
-                },
-                scales: {
-                  yAxes: [{
-                      ticks: {
-                          beginAtZero:true,
-                          min: 0,
-                          max: 10,
-                          fontColor: 'black'
+          <Col className="m4 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+            <div className="sectionBG">
+              <img src={sleepImg} alt="Sleep" />
+            </div>
+            <div className="sectionData">
+              <Bar
+                data={{
+                  labels: ["Hours"],
+                  datasets: [{
+                    label: "Sleep Last Night",
+                    borderColor: '#bebebe',
+                    backgroundColor: '#5f6b7f',
+                    data: [this.state.sleepCounter]
+                  }]
+                }}
+                width={100}
+                height={100}
+                options={{
+                  maintainAspectRatio: true,
+                  legend: {
+                    labels: {
+                        fontColor: "black",
+                        fontSize: 16
+                    }
+                  },
+                  tooltips: {
+                    backgroundColor: "black",
+                    bodyFontColor: "white"
+                  },
+                  scales: {
+                    xAxes: [{
+                      display: true,
+                      gridLines: {
+                        display: false
                       }
-                    }]
-                }
-              }}
-            />
-            <br/>
-            <div className="btn red waves-effect" onClick={this.subOneHour}>-</div>
-            <div className="btn green waves-effect" onClick={this.addOneHour}>+</div>
+                    }],
+                    yAxes: [{
+                        display: false,
+                          gridLines: {
+                            display: false
+                        },
+                        ticks: {
+                            beginAtZero:true,
+                            min: 0,
+                            max: 10,
+                            fontColor: 'black'
+                        }
+                      }]
+                  },
+                  plugins: {
+                    datalabels: {
+                      display: true,
+                      color: '#171A1F'
+                  }
+                  }
+                }}
+              />
+              <br/>
+              <div className="btn red waves-effect" onClick={this.subOneHourS}>-</div>
+              <div className="btn green waves-effect" onClick={this.addOneHourS}>+</div>
+            </div>
           </Col>
           </Row>
           <div className="btn green waves-effect prev leftArrow">{'<'}</div>
