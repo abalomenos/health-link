@@ -1,10 +1,4 @@
 
-.mainWrapper {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .containerDay {
     position: relative;
     background-color: rgb(221, 221, 221, 0.9);
@@ -12,10 +6,6 @@
 
 .divider {
     background-color: #000000;
-}
-
-.infoSection {
-    color: rgb(126, 75, 75);
 }
 
 .leftArrow {
@@ -29,8 +19,65 @@
     top: 50%;
     right: 10px;
 }
-
-.workoutContainer img {
+.graphContainer {
+    position: relative;
     height: 100%;
     width: 100%;
+    background-color: rgb(221, 221, 221, 1);
+    z-index: 2;
+}
+
+.sectionBG img {
+    position: absolute;
+    padding-top: 36px;
+    padding-bottom: 109px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+    z-index: 1;
+}
+
+.pieBG img {
+    position: absolute;
+    /* padding-top: 66px;
+    padding-bottom: 86px;
+    padding-right: 86px; */
+    padding-top: 36px;
+    padding-bottom: 76px;
+    /* padding-right: 86px; */
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.9;
+    filter: alpha(opacity=90); /* For IE8 and earlier */
+    z-index: 1;
+}
+
+.sectionData {
+    position: relative;
+    padding-bottom: 20px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    z-index: 2;
+}
+
+.chartTitle {
+    font-size: 16;
+    padding-top: 7px;
+}
+
+.nutritionMenu {
+    margin-top: -30px;
+}
+
+.react-datepicker-popper {
+    z-index: 3;
 }

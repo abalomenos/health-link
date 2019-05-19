@@ -1,4 +1,8 @@
 const db = require("../models");
+const JWT = require('jsonwebtoken');
+const User = require('../models/user');
+const auth = require('../config/auth')
+
 
 // Defining methods for the UserController
 module.exports = {
@@ -33,5 +37,12 @@ module.exports = {
       .then(dbModel => dbModel.remove())
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
+  },
+  login: function(req, res){
+    auth
+    .logUserIn(req.body.email, req.body.password)
+    .then(dbUser => res.json(dbUser))
+    .catch(err => res.status(400).json(err));
   }
+    
 };

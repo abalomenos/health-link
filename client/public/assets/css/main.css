@@ -11,8 +11,11 @@ body {
 }
 
 .mainWrapper {
-    min-height: calc(100vh - 305px);
+    min-height: calc(100vh - 312px);
     padding: 50px 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 Footer {
@@ -30,4 +33,12 @@ Footer {
 .row {
     margin: 0px;
     padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+
+    .mainWrapper {
+        width: 100%;
+        padding: 0px;
+    }
 }
