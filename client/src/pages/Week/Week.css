@@ -4,3 +4,15 @@
     background-color: rgb(221, 221, 221, 0.9);
     padding: 20px;
 }
+
+.mixedGraphContainer {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    background-color: rgb(221, 221, 221, 1);
+    z-index: 2;
+    border-color: #aaaaaa;
+    border-width: 1px;
+    border-style: solid;
+}

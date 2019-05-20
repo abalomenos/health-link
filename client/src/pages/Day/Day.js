@@ -25,7 +25,7 @@ class Day extends Component {
     super(props);
     this.state = {
       startDate: new Date(),
-      sleepCounter: 8,
+      sleepCounter: 6,
       workoutCounter: 2,
       waterCounter: 1,
       proteinCounter: 90,
@@ -137,24 +137,31 @@ class Day extends Component {
             </Col>
           </Row>
           <Row>
+          
+          
+            <Col className="s1 black-text center-align">
+              <div className="btn green waves-effect prev leftArrow">{'<'}</div>
+            </Col>
             <Col className="s4 offset-s1 black-text center-align">
               <DatePicker
                 selected={this.state.startDate}
                 onChange={this.handleDateChange}
               />
             </Col>
-            <Col className="s4 offset-s2 black-text center-align">
+            <Col className="s4 black-text center-align">
               Calories
               <br/>
               {this.state.caloriesCounter} / {this.state.maxCalories}
             </Col>
-            
+            <Col className="s1 offset-s1 black-text center-align">
+              <div className="btn green waves-effect next rightArrow">{'>'}</div>  
+            </Col>
           </Row>
           
           <Row>
           <hr/>
           
-          <Col className="m4 offset-m1 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBG">
               <img src={waterImg} alt="Water" />
             </div>
@@ -188,18 +195,18 @@ class Day extends Component {
                   xAxes: [{
                     display: true,
                     gridLines: {
-                      display: false
+                      display: true
                     }
                   }],
                   yAxes: [{
-                      display: false,
+                      display: true,
                         gridLines: {
-                          display: false
+                          display: true
                       },
                       ticks: {
                           beginAtZero:true,
-                          min: 0,
-                          max: 8,
+                          suggestedMin: 0,
+                          suggestedMax: 8,
                           fontColor: 'black'
                       }
                     }]
@@ -217,14 +224,15 @@ class Day extends Component {
             <div className="btn green waves-effect" onClick={this.addOneWater}>+</div>
             </div>
           </Col>
-          <Col className="m4 offset-m2 s10 offset-s1 black-text center-align graphContainer">
-            <div className="sectionBG pieBG">
+          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+            <div className="sectionBGPie">
               <img src={nutritionImg} alt="Nutrition" />
             </div>
-            <div className="sectionData">
-              <div className="chartTitle">
+            <div className="chartTitle">
                 Nutrition Facts
               </div>
+            <div className="sectionDataPie">
+              
               <Pie
                 data={{
                   labels: ["Protein", "Carbs", "Fat"],
@@ -274,7 +282,6 @@ class Day extends Component {
                   }
                 }}
               />
-              
               <br/>
               <div className="nutritionMenu">
                 <Modal trigger={<div className="btn green waves-effect">Add Meal</div>}>
@@ -286,7 +293,7 @@ class Day extends Component {
           </Col>
           </Row>
           <Row>
-          <Col className="m4 offset-m1 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             
             <div className="sectionBG">
               <img src={workoutImg} alt="Workout" />
@@ -321,13 +328,13 @@ class Day extends Component {
                     xAxes: [{
                       display: true,
                       gridLines: {
-                        display: false
+                        display: true
                       }
                     }],
                     yAxes: [{
-                        display: false,
+                        display: true,
                         gridLines: {
-                          display: false
+                          display: true
                         },
                         ticks: {
                             beginAtZero:true,
@@ -350,7 +357,7 @@ class Day extends Component {
               <div className="btn green waves-effect" onClick={this.addOneHourW}>+</div>
             </div>
           </Col>
-          <Col className="m4 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBG">
               <img src={sleepImg} alt="Sleep" />
             </div>
@@ -384,18 +391,18 @@ class Day extends Component {
                     xAxes: [{
                       display: true,
                       gridLines: {
-                        display: false
+                        display: true
                       }
                     }],
                     yAxes: [{
-                        display: false,
+                        display: true,
                           gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             beginAtZero:true,
-                            min: 0,
-                            max: 10,
+                            suggestedMin: 0,
+                            suggestedMax: 9,
                             fontColor: 'black'
                         }
                       }]
@@ -414,8 +421,6 @@ class Day extends Component {
             </div>
           </Col>
           </Row>
-          <div className="btn green waves-effect prev leftArrow">{'<'}</div>
-          <div className="btn green waves-effect next rightArrow">{'>'}</div>
         </Container>
       </div>
   
