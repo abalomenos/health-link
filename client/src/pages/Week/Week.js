@@ -18,7 +18,11 @@ class Week extends Component {
             sleepCounter: [8, 7, 7, 6, 8, 9, 5],
             waterCounter: [2, 3, 4, 5, 5, 6, 4],
             workoutConter: [4, 0, 2, 1, 0, 2, 0],
-            caloriesCounter: [1500, 1600, 1650, 1800, 2000, 1650, 1500]
+            caloriesCounter: [1500, 1600, 1650, 1800, 2000, 1650, 1500],
+            targetSleep: 8,
+            targetWater: 6,
+            targetWorkout: 2,
+            targetCalories: 1800
         };
     }
   
@@ -60,41 +64,94 @@ class Week extends Component {
                         </Row>
                         <Row>
                             <Col className="s10 offset-s1 black-text center-align">
+                                <div className="mixedGraphContainer">
                                 <Bar
                                     data={{
                                         datasets: [
                                             {
                                                 label: "Workout",
+                                                data: [this.state.workoutConter[0], this.state.workoutConter[1], this.state.workoutConter[2], this.state.workoutConter[3], this.state.workoutConter[4], this.state.workoutConter[5], this.state.workoutConter[6]],
                                                 type: 'bar',
                                                 fill: false,
                                                 borderColor: '#bebebe',
-                                                backgroundColor: '#00C864',
+                                                backgroundColor: 'rgba(0, 200, 100, 1)',
                                                 hoverBorderColor: '#bebebe',
-                                                hoverBackgroundColor: '#00FF80',
+                                                hoverBackgroundColor: 'rgba(0, 255, 128, 1)',
                                                 yAxisID: 'y-axis-1',
-                                                data: [this.state.workoutConter[0], this.state.workoutConter[1], this.state.workoutConter[2], this.state.workoutConter[3], this.state.workoutConter[4], this.state.workoutConter[5], this.state.workoutConter[6]]
+                                                stack: 1
+                                            },
+                                            {
+                                                label: "Target Workout",
+                                                data: [this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout],
+                                                type: 'bar',
+                                                fill: false,
+                                                borderColor: '#bebebe',
+                                                backgroundColor: 'rgba(0, 200, 100, 0.3)',
+                                                hoverBorderColor: '#bebebe',
+                                                hoverBackgroundColor: 'rgba(0, 255, 128, 0.3)',
+                                                yAxisID: 'y-axis-1',
+                                                stack: 1,
+                                                datalabels: {
+                                                    // hide datalabels for this specific dataset
+                                                    display: false
+                                                  }
                                             },
                                             {
                                                 label: "Water",
+                                                data: [this.state.waterCounter[0], this.state.waterCounter[1], this.state.waterCounter[2], this.state.waterCounter[3], this.state.waterCounter[4], this.state.waterCounter[5], this.state.waterCounter[6]],
                                                 type: 'bar',
                                                 fill: false,
                                                 borderColor: '#bebebe',
-                                                backgroundColor: '#0077BE',
+                                                backgroundColor: 'rgba(0, 119, 190, 1)',
                                                 hoverBorderColor: '#bebebe',
-                                                hoverBackgroundColor: '#4DBEFF',
+                                                hoverBackgroundColor: 'rgba(77, 190, 255, 1)',
                                                 yAxisID: 'y-axis-1',
-                                                data: [this.state.waterCounter[0], this.state.waterCounter[1], this.state.waterCounter[2], this.state.waterCounter[3], this.state.waterCounter[4], this.state.waterCounter[5], this.state.waterCounter[6]]
+                                                stack: 2
                                             },
                                             {
-                                                label: "Sleep",
+                                                label: "Target Water",
+                                                data: [this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater],
                                                 type: 'bar',
                                                 fill: false,
                                                 borderColor: '#bebebe',
-                                                backgroundColor: '#5f6b7f',
+                                                backgroundColor: 'rgba(0, 119, 190, 0.3)',
                                                 hoverBorderColor: '#bebebe',
-                                                hoverBackgroundColor: '#BFD8FF',
+                                                hoverBackgroundColor: 'rgba(77, 190, 255, 0.3)',
                                                 yAxisID: 'y-axis-1',
-                                                data: [this.state.sleepCounter[0], this.state.sleepCounter[1], this.state.sleepCounter[2], this.state.sleepCounter[3], this.state.sleepCounter[4], this.state.sleepCounter[5], this.state.sleepCounter[6]]
+                                                stack: 2,
+                                                datalabels: {
+                                                    // hide datalabels for this specific dataset
+                                                    display: false
+                                                  }
+                                            },
+                                            
+                                            {
+                                                label: "Sleep",
+                                                data: [this.state.sleepCounter[0], this.state.sleepCounter[1], this.state.sleepCounter[2], this.state.sleepCounter[3], this.state.sleepCounter[4], this.state.sleepCounter[5], this.state.sleepCounter[6]],
+                                                type: 'bar',
+                                                fill: false,
+                                                borderColor: '#bebebe',
+                                                backgroundColor: 'rgba(95, 107, 127, 1)',
+                                                hoverBorderColor: '#bebebe',
+                                                hoverBackgroundColor: 'rgba(138, 151, 158, 1)',
+                                                yAxisID: 'y-axis-1',
+                                                stack: 3
+                                            },
+                                            {
+                                                label: "Target Sleep",
+                                                data: [this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep],
+                                                type: 'bar',
+                                                fill: false,
+                                                borderColor: '#bebebe',
+                                                backgroundColor: 'rgba(95, 107, 127, 0.3)',
+                                                hoverBorderColor: '#bebebe',
+                                                hoverBackgroundColor: 'rgba(138, 151, 158, 0.3)',
+                                                yAxisID: 'y-axis-1',
+                                                stack: 3,
+                                                datalabels: {
+                                                    // hide datalabels for this specific dataset
+                                                    display: false
+                                                  }
                                             },
                                             {
                                                 label: "Calories",
@@ -102,14 +159,36 @@ class Week extends Component {
                                                 type: 'line',
                                                 fill: false,
                                                 borderWidth: 2,
-                                                borderColor: '#E0A765',
+                                                borderColor: '#CC985C',
                                                 backgroundColor: '#E0A765',
                                                 pointBorderColor: '#805F39',
                                                 pointBackgroundColor: '#805F39',
                                                 pointHoverBorderColor: '#CC985C',
                                                 pointHoverBackgroundColor: '#CC985C',
                                                 yAxisID: 'y-axis-2'
+                                            },
+                                            {
+                                                label: "Target Calories",
+                                                data: [this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories],
+                                                type: 'line',
+                                                fill: false,
+                                                borderWidth: 2,
+                                                pointBorderWidth: 0,
+                                                borderDash: [10, 10],
+                                                borderColor: '#E0A765',
+                                                backgroundColor: '#E0A765',
+                                                pointBorderColor: '#E0A765',
+                                                pointBackgroundColor: '#E0A765',
+                                                pointHoverBorderColor: '#E0A765',
+                                                pointHoverBackgroundColor: '#E0A765',
+                                                yAxisID: 'y-axis-2',
+                                                datalabels: {
+                                                    // hide datalabels for this specific dataset
+                                                    display: false
+                                                  }
                                             }
+                                            
+                                            
                                         ]
                                     }}
                                     width={100}
@@ -139,7 +218,9 @@ class Week extends Component {
                                         scales: {
                                             xAxes: [
                                             {
+                                                position: 'bottom',
                                                 display: true,
+                                                stacked: false,
                                                 gridLines: {
                                                     display: true
                                                 },
@@ -147,9 +228,10 @@ class Week extends Component {
                                             }
                                             ],
                                             yAxes: [
-                                            {
+                                            {   
                                                 type: 'linear',
                                                 display: true,
+                                                stacked: false,
                                                 position: 'left',
                                                 id: 'y-axis-1',
                                                 gridLines: {
@@ -160,8 +242,8 @@ class Week extends Component {
                                                 },
                                                 ticks: {
                                                     beginAtZero:true,
-                                                    min: 0,
-                                                    max: 14,
+                                                    suggestedMin: 0,
+                                                    suggestedMax: 18,
                                                     fontColor: 'Black'
                                                 }
                                             },
@@ -182,25 +264,6 @@ class Week extends Component {
                                                     fontColor: 'Black'
                                                 }
                                             }
-                                            // ,
-                                            // {
-                                            //     type: 'linear',
-                                            //     display: true,
-                                            //     position: 'left',
-                                            //     id: 'y-axis-3',
-                                            //     gridLines: {
-                                            //         display: false
-                                            //     },
-                                            //     labels: {
-                                            //         show: true
-                                            //     },
-                                            //     ticks: {
-                                            //         beginAtZero: false,
-                                            //         suggestedMin: 0,
-                                            //         suggestedMax: 6,
-                                            //         fontColor: 'Black'
-                                            //     }
-                                            // }
                                             ]
                                         },
                                         plugins: {
@@ -214,13 +277,8 @@ class Week extends Component {
                                          },
                                         }
                                     }}
-                                    plugins={{
-                                        afterDraw: (chartInstance, easing) => {
-                                            const ctx = chartInstance.chart.ctx;
-                                            ctx.fillText("Weekly Stats", 920, 200);
-                                        }
-                                    }}
                                 />
+                                </div>
                             </Col>
                         </Row>
                     </Container>

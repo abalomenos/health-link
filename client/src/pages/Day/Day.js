@@ -188,18 +188,18 @@ class Day extends Component {
                   xAxes: [{
                     display: true,
                     gridLines: {
-                      display: false
+                      display: true
                     }
                   }],
                   yAxes: [{
-                      display: false,
+                      display: true,
                         gridLines: {
-                          display: false
+                          display: true
                       },
                       ticks: {
                           beginAtZero:true,
-                          min: 0,
-                          max: 8,
+                          suggestedMin: 0,
+                          suggestedMax: 8,
                           fontColor: 'black'
                       }
                     }]
@@ -218,13 +218,14 @@ class Day extends Component {
             </div>
           </Col>
           <Col className="m4 offset-m2 s10 offset-s1 black-text center-align graphContainer">
-            <div className="sectionBG pieBG">
+            <div className="sectionBGPie">
               <img src={nutritionImg} alt="Nutrition" />
             </div>
-            <div className="sectionData">
-              <div className="chartTitle">
+            <div className="chartTitle">
                 Nutrition Facts
               </div>
+            <div className="sectionDataPie">
+              
               <Pie
                 data={{
                   labels: ["Protein", "Carbs", "Fat"],
@@ -274,7 +275,8 @@ class Day extends Component {
                   }
                 }}
               />
-              
+              <br/>
+              <br/>
               <br/>
               <div className="nutritionMenu">
                 <Modal trigger={<div className="btn green waves-effect">Add Meal</div>}>
@@ -321,13 +323,13 @@ class Day extends Component {
                     xAxes: [{
                       display: true,
                       gridLines: {
-                        display: false
+                        display: true
                       }
                     }],
                     yAxes: [{
-                        display: false,
+                        display: true,
                         gridLines: {
-                          display: false
+                          display: true
                         },
                         ticks: {
                             beginAtZero:true,
@@ -384,18 +386,18 @@ class Day extends Component {
                     xAxes: [{
                       display: true,
                       gridLines: {
-                        display: false
+                        display: true
                       }
                     }],
                     yAxes: [{
-                        display: false,
+                        display: true,
                           gridLines: {
-                            display: false
+                            display: true
                         },
                         ticks: {
                             beginAtZero:true,
-                            min: 0,
-                            max: 10,
+                            suggestedMin: 0,
+                            suggestedMax: 8,
                             fontColor: 'black'
                         }
                       }]
