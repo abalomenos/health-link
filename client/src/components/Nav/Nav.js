@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { Navbar, NavItem, Modal, Button, TextInput, Icon} from 'react-materialize';
+import { Navbar, NavItem, Modal, Button, TextInput, Icon, Select } from 'react-materialize';
 import AuthService from '../AuthService';
 import API from '../../utils/API';
 import { withRouter } from 'react-router-dom';
+import helper from '../../helpers/calculations'
 
 import './Nav.css';
+
+
 
 class Nav extends Component {
 
@@ -15,15 +18,16 @@ class Nav extends Component {
       open: false,
       width: window.innerWidth,
       name: "",
-      id: ""
+      id: "",
+      activity: "",
+      gender: ""
     };
   }
-
-
 
   
   componentDidMount() {
     window.addEventListener("resize", this.updateWidth);
+    console.log(JSON.stringify(this.state));
   }
   
     updateWidth = () => {
@@ -41,9 +45,21 @@ class Nav extends Component {
       this.setState({
           [name]: value
       });
+      const height = parseInt(this.state.height);
+      const weight = parseInt(this.state.weight);
+      const age = parseInt(this.state.age);
+      const gender = this.state.gender;
+      const activity = this.state.activity;
+      // this.setState({
+      //   BMI: Math.round(helper.calculateBMI(height, weight)*10)/10,
+      //   water_goal: Math.round(helper.calculateWaterGoal(weight)),
+      //   intake_goal: Math.round(helper.calculateCalorieRec(weight, height, age, gender, activity))
+      // });
       console.log(event.target);
       console.log(this.state);
     };
+
+    
   
     signIn() {
       this.Auth.login(this.state.email, this.state.password)
@@ -64,13 +80,22 @@ class Nav extends Component {
   
     handleFormSignupSubmit = event => {
       event.preventDefault();
-      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height)
+      const BMI = Math.round(helper.calculateBMI(this.state.height, this.state.weight)*10)/10;
+      const water_goal = Math.round(helper.calculateWaterGoal(this.state.weight));
+      const intake_goal =  Math.round(helper.calculateCalorieRec(this.state.weight, this.state.height, this.state.age, this.state.gender, this.state.activity));
+      // this.setState({
+      //   BMI: BMI,
+      //   water_goal: water_goal,
+      //   intake_goal: intake_goal
+      // })
+      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height, this.state.gender, this.state.activity, BMI, water_goal, intake_goal)
         .then(res => {
           // once the user has signed up
           // log them in
           this.signIn();
         })
         .catch(err => alert(err));
+        API.signUpUser()
     }
     
     toggleNav = () => {
@@ -118,6 +143,19 @@ class Nav extends Component {
                 <TextInput label="Weight (lbs)" name = "weight" onChange = {this.handleChange}/>
                 <TextInput email validate label="Email" name = "email" onChange = {this.handleChange}/>
                 <TextInput password label="Password" name = "password" onChange = {this.handleChange}/>
+                <Select value={this.state.activity} onChange={this.handleChange} label="Activity Level" name="activity">
+                  <option value="" disabled>Choose an option</option>
+                  <option value="Sedentary">Sedentary</option>
+                  <option value="Light">Light</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Very Active">Very Active</option>
+                  <option value="Extremely Active">Extremely Active</option>
+                </Select>
+                <Select value={this.state.gender} onChange={this.handleChange} label="Gender" name="gender">
+                <option value="" disabled>Choose an option</option>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </Select>
                 <Button type="submit" waves="light">Submit<Icon right>send</Icon></Button>
               </form>
             </Modal>

@@ -83,7 +83,7 @@ class User extends Component {
   };
 
   // Calculates water intake recommendation in ounces based on weight in pounds
-  calculateWaterGoal = () => {
+  calculateWaterGoal = weight => {
     return parseInt(this.state.weight) / 16;
   };
 
