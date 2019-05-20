@@ -61,12 +61,12 @@ app.get('/api/users/:id', isAuthenticated, (req, res) => {
   }).catch(err => res.status(400).send(err));
 });
 
-app.put('api/users/:id', isAuthenticated, (req, res) => {
+app.put('/api/users/:id', (req, res) => {
   db.User
-      .findOneAndUpdate({ _id: req.params.id }, req.body)
+      .findOneAndUpdate({ _id: req.params.id }, {$set: req.body})
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
-})
+});
 
 
 // Start the API server
