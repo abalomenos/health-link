@@ -24,14 +24,16 @@ const UserSchema = new Schema({
   water_progress: [
     {
     metric: { type: Number },
-    date: {type: Date}
+    date: {type: Date},
+    date_string: String
     }
   ],
   exercise_goal: {type: Number, default: 10}, 
   exercise_progress: [
     {
     metric: { type: Number },
-    date: {type: Date}
+    date: {type: Date},
+    date_string: String
     }
   ],
   intake_goal: Number, 
@@ -41,14 +43,16 @@ const UserSchema = new Schema({
     protein: { type: Number },
     fat: { type: Number },
     carbs: { type: Number },
-    date: {type: Date}
+    date: {type: Date},
+    date_string: String
     }
   ],
   sleep_goal: {type: Number, default: 8}, 
   sleep_progress: [
     {
     metric: { type: Number },
-    date: {type: Date}
+    date: {type: Date},
+    date_string: String
     }
   ]
 });
