@@ -18,11 +18,20 @@ export default {
     return axios.put("/api/users", + id);
   },
   //signs up a user
-  signUpUser: (email, password, name, age, weight, height) => {
-    return axios.post('/api/users', {email: email, password: password, name: name, age: age, weight: weight, height: height});
-  },
-
-  // login: (email, password) => {
-  //   return axios.post('/api/users/login', {email: email, password: password});
-  // }
+  signUpUser: (email, password, name, age, weight, height, gender, activity, BMI, water_goal, intake_goal) => {
+    return axios.post('/api/users', 
+    {
+      email: email, 
+      password: password, 
+      name: name, 
+      age: age, 
+      weight: weight, 
+      height: height,
+      gender: gender,
+      activity: activity,
+      BMI: BMI,
+      water_goal: water_goal,
+      intake_goal: intake_goal
+    });
+  }
 };
