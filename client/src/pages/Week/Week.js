@@ -17,12 +17,14 @@ class Week extends Component {
         this.state = {
             sleepCounter: [8, 7, 7, 6, 8, 9, 5],
             waterCounter: [2, 3, 4, 5, 5, 6, 4],
-            workoutConter: [4, 0, 2, 1, 0, 2, 0],
+            workoutCounter: [4, 0, 2, 1, 0, 2, 0],
             caloriesCounter: [1500, 1600, 1650, 1800, 2000, 1650, 1500],
             targetSleep: 8,
             targetWater: 6,
             targetWorkout: 2,
-            targetCalories: 1800
+            targetCalories: 1800,
+            date: Date.now(),
+            dateString: moment().format("YYYY-MM-DD")
         };
     }
   
@@ -31,16 +33,62 @@ class Week extends Component {
           this.setState(
             {
               id: res.data._id,
-              name: res.data.name,
-              age: res.data.age,
-              water_goal: res.data.water_goal,
-              calorie_goal: res.data.calorie_goal,
-              exercise_goal: res.data.exercise_goal,
-              sleep_goal: res.data.sleep_goal,
+          name: res.data.name,
+          age: res.data.age,
+          weight: res.data.weight,
+          height: res.data.height,
+          gender: res.data.gender,
+          activity: res.data.activity,
+          BMI: res.data.BMI,
+          targetWater: res.data.water_goal,
+          targetCalories: res.data.intake_goal,
+          targetWorkout: res.data.exercise_goal,
+          targetSleep: res.data.sleep_goal,
+          water_progress: res.data.water_progress,
+          exercise_progress: res.data.exercise_progress,
+          intake_progress: res.data.intake_progress,
+          sleep_progress: res.data.sleep_progress,
+          sleepCounter: [
+            this.findMetric(res.data.sleep_progress, moment().subtract(6, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.sleep_progress, moment().subtract(5, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.sleep_progress, moment().subtract(4, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.sleep_progress, moment().subtract(3, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.sleep_progress, moment().subtract(2, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.sleep_progress, moment().subtract(1, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.sleep_progress, moment().format('YYYY-MM-DD'), null, false, false).metric
+          ],
+          workoutCounter: [
+            this.findMetric(res.data.exercise_progress, moment().subtract(6, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.exercise_progress, moment().subtract(5, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.exercise_progress, moment().subtract(4, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.exercise_progress, moment().subtract(3, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.exercise_progress, moment().subtract(2, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.exercise_progress, moment().subtract(1, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.exercise_progress, moment().format('YYYY-MM-DD'), null, false, false).metric
+          ],
+          waterCounter: [
+            this.findMetric(res.data.water_progress, moment().subtract(6, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.water_progress, moment().subtract(5, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.water_progress, moment().subtract(4, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.water_progress, moment().subtract(3, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.water_progress, moment().subtract(2, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.water_progress, moment().subtract(1, "days").format('YYYY-MM-DD'), null, false, false).metric,
+            this.findMetric(res.data.water_progress, moment().format('YYYY-MM-DD'), null, false, false).metric
+          ],
+          caloriesCounter: [
+            this.findMetric(res.data.intake_progress, moment().subtract(6, "days").format('YYYY-MM-DD'), null, false, true).metric[0],
+            this.findMetric(res.data.intake_progress, moment().subtract(5, "days").format('YYYY-MM-DD'), null, false, true).metric[0],
+            this.findMetric(res.data.intake_progress, moment().subtract(4, "days").format('YYYY-MM-DD'), null, false, true).metric[0],
+            this.findMetric(res.data.intake_progress, moment().subtract(3, "days").format('YYYY-MM-DD'), null, false, true).metric[0],
+            this.findMetric(res.data.intake_progress, moment().subtract(2, "days").format('YYYY-MM-DD'), null, false, true).metric[0],
+            this.findMetric(res.data.intake_progress, moment().subtract(1, "days").format('YYYY-MM-DD'), null, false, true).metric[0],
+            this.findMetric(res.data.intake_progress, moment().format('YYYY-MM-DD'), null, false, true).metric[0],
+          ]
             }
           );
           console.log("hello" + res.data.name);
           console.log(moment().subtract(10,"days").format("MM/DD/YYYY"));
+          console.log(this.state);
         });
       };
   
@@ -49,6 +97,44 @@ class Week extends Component {
       this.setState({
         [name]: value
       });
+    };
+
+    findMetric(progressArr, dateString, metric, updateMetric, isIntake) {
+      var foundDate = false;
+      var progressArrCopy = progressArr;
+      var metricOfInterest = metric || 0;
+  
+      for(var i = progressArrCopy.length-1; i >= 0; i--){
+        if (dateString === progressArrCopy[i].date_string){
+          foundDate = true;
+          if (!isIntake){
+            if (updateMetric){
+              progressArrCopy[i].metric = metric;
+            }
+            metricOfInterest = progressArrCopy[i].metric;
+          }
+          else {
+            if(updateMetric){
+              var old_cals = progressArrCopy[i].calories || 0;
+              var old_protein = progressArrCopy[i].protein || 0;
+              var old_fat = progressArrCopy[i].fat || 0;
+              var old_carbs = progressArrCopy[i].carbs || 0;
+  
+              progressArrCopy[i].calories = metric[0] + old_cals;
+              progressArrCopy[i].protein = metric[1] + old_protein;
+              progressArrCopy[i].fat = metric[2] + old_fat;
+              progressArrCopy[i].carbs = metric[3] + old_carbs;
+            }
+            metricOfInterest = [progressArrCopy[i].calories, progressArrCopy[i].carbs, progressArrCopy[i].protein, progressArrCopy[i].fat];
+          }
+          break;
+        }
+      }
+      if (isIntake && !foundDate){
+        metricOfInterest = [0,0,0,0];
+      }
+      console.log({foundDate: foundDate, isIntake: isIntake, arr: progressArrCopy, metric: metricOfInterest});
+      return {foundDate: foundDate, isIntake: isIntake, arr: progressArrCopy, metric: metricOfInterest};
     };
     
     
@@ -70,7 +156,7 @@ class Week extends Component {
                                         datasets: [
                                             {
                                                 label: "Workout",
-                                                data: [this.state.workoutConter[0], this.state.workoutConter[1], this.state.workoutConter[2], this.state.workoutConter[3], this.state.workoutConter[4], this.state.workoutConter[5], this.state.workoutConter[6]],
+                                                data: [this.state.workoutCounter[0], this.state.workoutCounter[1], this.state.workoutCounter[2], this.state.workoutCounter[3], this.state.workoutCounter[4], this.state.workoutCounter[5], this.state.workoutCounter[6]],
                                                 type: 'bar',
                                                 fill: false,
                                                 borderColor: '#bebebe',
@@ -205,7 +291,15 @@ class Week extends Component {
                                                 fontSize: 16
                                             }
                                         },
-                                        labels: ["Monday", "Tuesday", "Wednesdday", "Thursday", "Friday", "Saturday", "Sundsay"],
+                                        labels: [
+                                          moment().subtract(6, "days").format("dddd (M/DD/YY)"),
+                                          moment().subtract(5, "days").format("dddd (M/DD/YY)"),
+                                          moment().subtract(4, "days").format("dddd (M/DD/YY)"),
+                                          moment().subtract(3, "days").format("dddd (M/DD/YY)"),
+                                          moment().subtract(2, "days").format("dddd (M/DD/YY)"),
+                                          moment().subtract(1, "days").format("dddd (M/DD/YY)"),
+                                          moment().format("dddd (M/DD/YY)"),
+                                        ],
                                         responsive: true,
                                         tooltips: {
                                             mode: 'label'
@@ -224,7 +318,15 @@ class Week extends Component {
                                                 gridLines: {
                                                     display: true
                                                 },
-                                                labels: ["Monday", "Tuesday", "Wednesdday", "Thursday", "Friday", "Saturday", "Sundsay"],
+                                                labels: [
+                                                  moment().subtract(6, "days").format("dddd (M/DD/YY)"),
+                                                  moment().subtract(5, "days").format("dddd (M/DD/YY)"),
+                                                  moment().subtract(4, "days").format("dddd (M/DD/YY)"),
+                                                  moment().subtract(3, "days").format("dddd (M/DD/YY)"),
+                                                  moment().subtract(2, "days").format("dddd (M/DD/YY)"),
+                                                  moment().subtract(1, "days").format("dddd (M/DD/YY)"),
+                                                  moment().format("dddd (M/DD/YY)"),
+                                                ],
                                             }
                                             ],
                                             yAxes: [
