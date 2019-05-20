@@ -360,7 +360,8 @@ class Day extends Component {
                       ticks: {
                           beginAtZero:true,
                           suggestedMin: 0,
-                          suggestedMax: 8,
+                          suggestedMax: 7,
+                          precision: 0,
                           fontColor: 'black'
                       }
                     }]
@@ -495,7 +496,8 @@ class Day extends Component {
                         ticks: {
                             beginAtZero:true,
                             suggestedMin: 0,
-                            suggestedMax: 6,
+                            suggestedMax: 4,
+                            precision: 0,
                             fontColor: 'black'
                         }
                       }]
@@ -559,6 +561,7 @@ class Day extends Component {
                             beginAtZero:true,
                             suggestedMin: 0,
                             suggestedMax: 9,
+                            precision: 0,
                             fontColor: 'black'
                         }
                       }]

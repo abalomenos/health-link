@@ -167,7 +167,7 @@ class Week extends Component {
                                                 stack: 1
                                             },
                                             {
-                                                label: "Target Workout",
+                                                label: "Workout Target",
                                                 data: [this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout, this.state.targetWorkout],
                                                 type: 'bar',
                                                 fill: false,
@@ -195,7 +195,7 @@ class Week extends Component {
                                                 stack: 2
                                             },
                                             {
-                                                label: "Target Water",
+                                                label: "Water Target",
                                                 data: [this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater, this.state.targetWater],
                                                 type: 'bar',
                                                 fill: false,
@@ -224,7 +224,7 @@ class Week extends Component {
                                                 stack: 3
                                             },
                                             {
-                                                label: "Target Sleep",
+                                                label: "Sleep Target",
                                                 data: [this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep, this.state.targetSleep],
                                                 type: 'bar',
                                                 fill: false,
@@ -245,33 +245,34 @@ class Week extends Component {
                                                 type: 'line',
                                                 fill: false,
                                                 borderWidth: 2,
-                                                borderColor: '#CC985C',
-                                                backgroundColor: '#E0A765',
-                                                pointBorderColor: '#805F39',
-                                                pointBackgroundColor: '#805F39',
-                                                pointHoverBorderColor: '#CC985C',
-                                                pointHoverBackgroundColor: '#CC985C',
+                                                borderColor: 'rgba(105, 78, 47, 1)',
+                                                backgroundColor: 'rgba(224, 167, 101, 1)',
+                                                pointBorderColor: 'rgba(74, 55, 33, 1)',
+                                                pointBackgroundColor: 'rgba(74, 55, 33, 1)',
+                                                pointHoverBorderColor: 'rgba(181, 135, 81, 1)',
+                                                pointHoverBackgroundColor: 'rgba(181, 135, 81, 1)',
                                                 yAxisID: 'y-axis-2'
                                             },
                                             {
-                                                label: "Target Calories",
+                                                label: "Calories Target",
                                                 data: [this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories, this.state.targetCalories],
                                                 type: 'line',
                                                 fill: false,
                                                 borderWidth: 2,
                                                 pointBorderWidth: 0,
                                                 borderDash: [10, 10],
-                                                borderColor: '#E0A765',
-                                                backgroundColor: '#E0A765',
-                                                pointBorderColor: '#E0A765',
-                                                pointBackgroundColor: '#E0A765',
-                                                pointHoverBorderColor: '#E0A765',
-                                                pointHoverBackgroundColor: '#E0A765',
+                                                borderColor: 'rgba(105, 78, 47, 0.3)',
+                                                backgroundColor: 'rgba(224, 167, 101, 0.3)',
+                                                pointBorderColor: 'rgba(74, 55, 33, 0.3)',
+                                                pointBackgroundColor: 'rgba(74, 55, 33, 0.3)',
+                                                pointHoverBorderColor: 'rgba(181, 135, 81, 0.3)',
+                                                pointHoverBackgroundColor: 'rgba(181, 135, 81, 0.3)',
                                                 yAxisID: 'y-axis-2',
                                                 datalabels: {
                                                     // hide datalabels for this specific dataset
                                                     display: false
-                                                  }
+                                                },
+                                                pointRadius: 0
                                             }
                                             
                                             
@@ -374,7 +375,7 @@ class Week extends Component {
                                             clamp: false,
                                             anchor: 'end',
                                             align: 'end',
-                                            offset: 2,
+                                            offset: 1,
                                             color: 'black'
                                          },
                                         }
