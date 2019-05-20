@@ -1,24 +1,15 @@
 
-.mainWrapper {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-}
-
 .containerDay {
     position: relative;
     background-color: rgb(221, 221, 221, 0.9);
+    padding: 20px;
 }
 
 .divider {
     background-color: #000000;
 }
 
-.infoSection {
-    color: rgb(126, 75, 75);
-}
-
-.leftArrow {
+/* .leftArrow {
     position: absolute;
     top: 50%;
     left: 10px;
@@ -28,9 +19,81 @@
     position: absolute;
     top: 50%;
     right: 10px;
-}
-
-.workoutContainer img {
+} */
+.graphContainer {
+    position: relative;
     height: 100%;
     width: 100%;
+    background-color: rgb(221, 221, 221, 1);
+    z-index: 2;
+    border-color: #aaaaaa;
+    border-width: 1px;
+    border-style: solid;
+}
+
+.sectionBG img {
+    position: absolute;
+    padding-top: 36px;
+    padding-bottom: 108px;
+    padding-right: 14px;
+    padding-left: 34px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    z-index: 1;
+}
+
+.sectionData {
+    position: relative;
+    padding-bottom: 20px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    z-index: 2;
+}
+
+.sectionBGPie img {
+    position: absolute;
+    padding-top: 36px;
+    padding-bottom: 76px;
+    padding-right: 14px;
+    padding-left: 14px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    z-index: 1;
+}
+
+.sectionDataPie {
+    position: relative;
+    padding-bottom: 20px;
+    padding-left: 74px;
+    height: 100%;
+    width: 100%;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* For IE8 and earlier */
+    z-index: 2;
+}
+
+.chartTitle {
+    font-size: 16;
+    padding-top: 7px;
+}
+
+.nutritionMenu {
+    margin-top: 45px;
+    margin-left: -74px;
+}
+
+.react-datepicker-popper {
+    z-index: 3;
 }
