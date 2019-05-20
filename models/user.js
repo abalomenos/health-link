@@ -17,9 +17,9 @@ const UserSchema = new Schema({
   age: { type: Number, required: true},
   weight: { type: Number, required: true },
   height: { type: Number, required: true },
-  gender: { type: String/*, required: true */},
-  activity: { type: String/*, required: true */},
-  BMI: { type: Number/*, required: true */},
+  gender: { type: String, required: true},
+  activity: { type: String, required: true},
+  BMI: { type: Number, required: true},
   water_goal: Number, 
   water_progress: [
     {
@@ -27,7 +27,7 @@ const UserSchema = new Schema({
     date: {type: Date}
     }
   ],
-  exercise_goal: Number, 
+  exercise_goal: {type: Number, default: 10}, 
   exercise_progress: [
     {
     metric: { type: Number },
@@ -44,7 +44,7 @@ const UserSchema = new Schema({
     date: {type: Date}
     }
   ],
-  sleep_goal: Number, 
+  sleep_goal: {type: Number, default: 8}, 
   sleep_progress: [
     {
     metric: { type: Number },
