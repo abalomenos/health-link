@@ -42,3 +42,8 @@
     border-width: 1px;
     border-style: solid;
 }
+.text{
+    text-align: left;
+    
+    margin-left: -100px;
+}
