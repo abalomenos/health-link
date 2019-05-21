@@ -7,10 +7,10 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import './About.css';
 
 // Images
-const backgroundImg = './assets/images/nutrition1.jpg'
+const backgroundImg = './assets/images/nutrition5.jpg'
 const first = './assets/images/workout1.jpg'
 const second = './assets/images/water1.jpg'
-const third = './assets/images/sleep1.jpg'
+const third = './assets/images/sleep2.jpg'
 const fourth = './assets/images/health.jpg'
 
 class About extends Component {
@@ -39,7 +39,7 @@ class About extends Component {
           <Slide image={<img src={backgroundImg} />}>
             <Caption placement="left">
               <h3>
-                Manage your food intake.
+                Eat healthier!
               </h3>
               <h5 className="light grey-text text-lighten-3">
                 We count the calories for you!
