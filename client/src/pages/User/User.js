@@ -47,6 +47,7 @@ class User extends Component {
     });
   };
 
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -54,8 +55,12 @@ class User extends Component {
     });
   };
 
-  handleSelectChange(event) {
-    this.setState({value: event.target.value});
+  handleSelectChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleFormSubmit = event => {
@@ -94,7 +99,8 @@ class User extends Component {
           <form className="userForm">
           <Row className="userFormSection">
             <Col className="s12 center-align">
-                <TextInput
+                <TextInput 
+                  m={12} 
                   value={this.state.name}
                   onChange={this.handleInputChange}
                   name="name"
@@ -105,6 +111,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
+                  m={12} 
                   value={this.state.age}
                   onChange={this.handleInputChange}
                   name="age"
@@ -115,6 +122,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
+                  m={12} 
                   value={this.state.weight}
                   onChange={this.handleInputChange}
                   name="weight"
@@ -125,6 +133,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
+                  m={12} 
                   value={this.state.height}
                   onChange={this.handleInputChange}
                   name="height"
@@ -134,7 +143,7 @@ class User extends Component {
             </Row>
             <Row>
               <Col className="s12 center-align">
-                <Select value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level">
+                <Select m={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level">
                   <option value="sedentary">Sedentary</option>
                   <option value="light">Light</option>
                   <option value="moderate">Moderate</option>
@@ -145,7 +154,7 @@ class User extends Component {
             </Row>
             <Row>
               <Col className="s12 center-align">
-                <Select value={this.state.gender} onChange={this.handleSelectChange} label="Activity Level">
+                <Select m={12} value={this.state.gender} onChange={this.handleSelectChange} label="Activity Level">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </Select>
