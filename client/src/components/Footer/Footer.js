@@ -135,6 +135,9 @@ class Foot extends Component {
                                 <p>
                                     Your one stop for Health and Fitness
                                 </p>
+                                <p>
+                                With stress, illness and disease on the rise, this health management application will help users set, track and achieve wellness goals to maintain a healthier lifestyle. Users create an account providing simple health information and the goals they want to achieve for the day/week. The application will help users track the progress of their goals and send reminders to help them achieve said goals. It will be a progressive web application with a desktop version as well a phone app.
+                                </p>
                             </Col>
                         </Row>
                     </Container>
