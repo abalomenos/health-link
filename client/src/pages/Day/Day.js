@@ -240,7 +240,7 @@ class Day extends Component {
       arrCopy.push({"metric": metric, "date": this.state.date, "date_string": dateString});
     }
     else if (!findData.foundDate) {
-      arrCopy.push({"calories": metric[0], "protein": metric[1], "fat": metric[2], "carbs": metric[3], "date": Date.now(), "date_string": moment().format("YYYY-MM-DD")});
+      arrCopy.push({"calories": metric[0], "protein": metric[1], "fat": metric[2], "carbs": metric[3], "date": this.state.date, "date_string": this.state.dateString});
     }
 
     this.setState({
