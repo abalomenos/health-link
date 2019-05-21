@@ -47,6 +47,7 @@ class User extends Component {
     });
   };
 
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -54,8 +55,12 @@ class User extends Component {
     });
   };
 
-  handleSelectChange(event) {
-    this.setState({value: event.target.value});
+  handleSelectChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleFormSubmit = event => {

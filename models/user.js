@@ -28,7 +28,7 @@ const UserSchema = new Schema({
     date_string: String
     }
   ],
-  exercise_goal: {type: Number, default: 10}, 
+  exercise_goal: {type: Number, default: 2}, 
   exercise_progress: [
     {
     metric: { type: Number },
