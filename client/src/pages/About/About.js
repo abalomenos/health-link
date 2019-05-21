@@ -59,7 +59,7 @@ class About extends Component {
           <Slide image={<img src={third} />}>
             <Caption>
               <h3>
-                But a healthier life includes the zzzz
+                But a healthier life includes sleep too!
               </h3>
               <h5 className="light grey-text text-lighten-3">
                 We also take this into account.
@@ -74,10 +74,10 @@ class About extends Component {
             <Col className="s12">
               <h5>
                 A healthy life is a combination of things, not just "vegetables."
-                                </h5>
+              </h5>
               <p>
                 Come see how we can use your data to help you achieve your goals!
-                                </p>
+              </p>
               <p>               -The Health Link team</p>
             </Col>
           </Row>
