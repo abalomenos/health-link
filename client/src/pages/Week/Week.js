@@ -338,7 +338,7 @@ class Week extends Component {
                                                 {   
                                                     type: 'linear',
                                                     display: true,
-                                                    stacked: false,
+                                                    stacked: true,
                                                     position: 'left',
                                                     id: 'y-axis-1',
                                                     gridLines: {
