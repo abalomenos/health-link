@@ -12,12 +12,13 @@ class Foot extends Component {
                     copyrights= {
                         `Health Link \u00A9 2019`
                     }
-                    // moreLinks={<a />}
+                    moreLinks={<a />}
                     links={
                         <ul>
                             <p className="center-align">
                                 Team
                             </p>
+                            <hr/>
                             <li>
                                 <ul>
                                     <li className="teamMember">
@@ -42,7 +43,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                             <li>
                                 <ul>
@@ -68,7 +68,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                             <li>
                                 <ul>
@@ -94,7 +93,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                             <li>
                                 <ul>
@@ -120,25 +118,24 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                         </ul>
                     }
                     className="footer"
                     >
                     <Container>
-                        <Row>
-                            <Col  className="s12">
-                                <h5>
+                        <Row className="text">
+                            
+                                <h5 className="center-align">
                                     Health Link
                                 </h5>
-                                <p>
+                                <p className="text">
                                     Your one stop for Health and Fitness
                                 </p>
-                                <p>
-                                With stress, illness and disease on the rise, this health management application will help users set, track and achieve wellness goals to maintain a healthier lifestyle. Users create an account providing simple health information and the goals they want to achieve for the day/week. The application will help users track the progress of their goals and send reminders to help them achieve said goals. It will be a progressive web application with a desktop version as well a phone app.
+                                <p className="text">
+                                    With stress, illness and disease on the rise, this health management application will help users set, track and achieve wellness goals to maintain a healthier lifestyle. Users create an account providing simple health information and the goals they want to achieve for the day/week. The application will help users track the progress of their goals and send reminders to help them achieve said goals. It will be a progressive web application with a desktop version as well a phone app.
                                 </p>
-                            </Col>
+                            
                         </Row>
                     </Container>
                 </Footer>

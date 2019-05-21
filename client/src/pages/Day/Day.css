@@ -34,9 +34,25 @@
 .sectionBG img {
     position: absolute;
     padding-top: 36px;
-    padding-bottom: 108px;
-    padding-right: 14px;
-    padding-left: 34px;
+    padding-bottom: 110px;
+    padding-right: 15px;
+    padding-left: 35px;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+    z-index: 1;
+}
+
+.sectionBGL img {
+    position: absolute;
+    padding-top: 36px;
+    padding-bottom: 110px;
+    padding-right: 15px;
+    padding-left: 40px;
     top: 0;
     left: 0;
     height: 100%;
@@ -61,8 +77,8 @@
     position: absolute;
     padding-top: 36px;
     padding-bottom: 76px;
-    padding-right: 14px;
-    padding-left: 14px;
+    padding-right: 15px;
+    padding-left: 15px;
     top: 0;
     left: 0;
     height: 100%;
@@ -90,7 +106,7 @@
 }
 
 .nutritionMenu {
-    margin-top: 45px;
+    margin-top: 74px;
     margin-left: -74px;
 }
 
