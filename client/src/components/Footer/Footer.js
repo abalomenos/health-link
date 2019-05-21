@@ -126,14 +126,14 @@ class Foot extends Component {
                     <Container>
                         <Row className="text">
                             
-                                <h5>
+                                <h5 className="center-align">
                                     Health Link
                                 </h5>
                                 <p className="text">
                                     Your one stop for Health and Fitness
                                 </p>
                                 <p className="text">
-                                With stress, illness and disease on the rise, this health management application will help users set, track and achieve wellness goals to maintain a healthier lifestyle. Users create an account providing simple health information and the goals they want to achieve for the day/week. The application will help users track the progress of their goals and send reminders to help them achieve said goals. It will be a progressive web application with a desktop version as well a phone app.
+                                    With stress, illness and disease on the rise, this health management application will help users set, track and achieve wellness goals to maintain a healthier lifestyle. Users create an account providing simple health information and the goals they want to achieve for the day/week. The application will help users track the progress of their goals and send reminders to help them achieve said goals. It will be a progressive web application with a desktop version as well a phone app.
                                 </p>
                             
                         </Row>
