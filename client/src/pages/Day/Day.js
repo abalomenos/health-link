@@ -29,6 +29,7 @@ class Day extends Component {
       sleepCounter: 6,
       workoutCounter: 2,
       waterCounter: 1,
+      targetWater: 6,
       proteinCounter: 90,
       carbsCounter: 50,
       fatCounter: 40,
@@ -319,60 +320,96 @@ class Day extends Component {
             <div className="sectionBG">
               <img src={waterImg} alt="Water" />
             </div>
+            <div className="chartTitle">
+                Water Intake
+              </div>
             <div className="sectionData">
             <Bar
               data={{
-                labels: ["Cups (1 cup = 8 oz.)"],
-                datasets: [{
-                  label: "Water Consumption",
-                  borderColor: '#bebebe',
-                  backgroundColor: '#0077BE',
-                  data: [this.state.waterCounter]
-                }]
+                  datasets: [
+                      {
+                          label: ["Water"],
+                          data: [this.state.waterCounter],
+                          type: 'bar',
+                          fill: false,
+                          borderColor: '#bebebe',
+                          backgroundColor: 'rgba(0, 119, 190, 1)',
+                          hoverBorderColor: '#bebebe',
+                          hoverBackgroundColor: 'rgba(77, 190, 255, 1)',
+                          yAxisID: 'y-axis-1',
+                          stack: 2
+                      },
+                      {
+                          label: ["Water Target"],
+                          data: [this.state.targetWater],
+                          type: 'bar',
+                          fill: false,
+                          borderColor: '#bebebe',
+                          backgroundColor: 'rgba(0, 119, 190, 0.3)',
+                          hoverBorderColor: '#bebebe',
+                          hoverBackgroundColor: 'rgba(77, 190, 255, 0.3)',
+                          yAxisID: 'y-axis-1',
+                          stack: 2,
+                          datalabels: {
+                              // hide datalabels for this specific dataset
+                              display: false
+                          }
+                      }
+                  ]
               }}
-              width={100}
-              height={100}
-              options={{
-                maintainAspectRatio: true,
-                legend: {
-                  labels: {
-                      boxWidth: 0,
-                      fontColor: "black",
-                      fontSize: 16
-                  }
-                },
-                tooltips: {
-                  backgroundColor: "black",
-                  bodyFontColor: "white"
-                },
-                scales: {
-                  xAxes: [{
-                    display: true,
-                    gridLines: {
-                      display: true
-                    }
-                  }],
-                  yAxes: [{
-                      display: true,
+                width={100}
+                height={100}
+                options={{
+                    maintainAspectRatio: true,
+                    legend: {
+                      display: false
+                    },
+                      
+                      responsive: true,
+                    tooltips: {
+                      mode: 'label',
+                      backgroundColor: "black",
+                      bodyFontColor: "white"
+                    },
+                    scales: {
+                      xAxes: [{
+                        position: 'bottom',
+                        display: true,
+                        stacked: true,
                         gridLines: {
                           display: true
-                      },
-                      ticks: {
-                          beginAtZero:true,
-                          suggestedMin: 0,
-                          suggestedMax: 7,
-                          precision: 0,
-                          fontColor: 'black'
-                      }
-                    }]
-                },
-                plugins: {
-                  datalabels: {
-                    display: true,
-                    color: 'black'
-                 }
-                }
-              }}
+                        },
+                        labels: ["Cups (1 cup = 8 oz.)"]
+                      }],
+                      yAxes: [
+                        {   
+                            type: 'linear',
+                            display: true,
+                            stacked: false,
+                            position: 'left',
+                            id: 'y-axis-1',
+                            gridLines: {
+                                display: false
+                            },
+                            labels: {
+                                show: true
+                            },
+                          ticks: {
+                              beginAtZero:true,
+                              suggestedMin: 0,
+                              suggestedMax: 20,
+                              precision: 0,
+                              fontColor: 'black'
+                          }
+                        }]
+                    },
+                    plugins: {
+                      datalabels: {
+                        display: true,
+                        color: 'black'
+                    }
+                    }
+                }}
             />
             <br/>
             <div className="btn red waves-effect" onClick={this.subOneWater}>-</div>

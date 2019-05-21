@@ -18,6 +18,7 @@ class Foot extends Component {
                             <p className="center-align">
                                 Team
                             </p>
+                            <hr/>
                             <li>
                                 <ul>
                                     <li className="teamMember">
@@ -42,7 +43,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                             <li>
                                 <ul>
@@ -68,7 +68,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                             <li>
                                 <ul>
@@ -94,7 +93,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                             <li>
                                 <ul>
@@ -120,7 +118,6 @@ class Foot extends Component {
                                         </a>
                                     </li>
                                 </ul>
-                                <hr/>
                             </li>
                         </ul>
                     }
