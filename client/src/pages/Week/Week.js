@@ -315,7 +315,7 @@ class Week extends Component {
                                             {
                                                 position: 'bottom',
                                                 display: true,
-                                                stacked: false,
+                                                stacked: true,
                                                 gridLines: {
                                                     display: true
                                                 },
