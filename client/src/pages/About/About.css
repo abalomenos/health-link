@@ -1,11 +1,26 @@
  
  .containerAbout {
-    height: 100%  !important;
- }
+  height: 100%  !important;
+}
 
 .carousel-wrapper,
 .carousel,
 .carousel > .slider-wrapper,
 .carousel > .slider-wrapper > .slider {
-  height: 100%;
+height: 100%;
+}
+
+.info{
+margin-top: 110px;
+margin-bottom: 5px
+}
+
+.health{
+text-align: center;
+}
+.s12{
+text-align: center;
+}
+.mainWrapper{
+margin-top: -30px;
 }
