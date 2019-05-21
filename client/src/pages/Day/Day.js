@@ -27,9 +27,11 @@ class Day extends Component {
     this.state = {
       startDate: new Date(),
       sleepCounter: 6,
+      targetSleep: 8,
       workoutCounter: 2,
+      targetWorkout: 2,
       waterCounter: 1,
-      targetWater: 6,
+      targetWater: 12,
       proteinCounter: 90,
       carbsCounter: 50,
       fatCounter: 40,
@@ -62,10 +64,10 @@ class Day extends Component {
           gender: res.data.gender,
           activity: res.data.activity,
           BMI: res.data.BMI,
-          water_goal: res.data.water_goal,
-          intake_goal: res.data.intake_goal,
-          exercise_goal: res.data.exercise_goal,
-          sleep_goal: res.data.sleep_goal,
+          targetWater: res.data.water_goal,
+          targetCalories: res.data.intake_goal,
+          targetWorkout: res.data.exercise_goal,
+          targetSleep: res.data.sleep_goal,
           water_progress: res.data.water_progress,
           exercise_progress: res.data.exercise_progress,
           intake_progress: res.data.intake_progress,
@@ -317,7 +319,7 @@ class Day extends Component {
           <hr/>
           
           <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
-            <div className="sectionBG">
+            <div className="sectionBGL">
               <img src={waterImg} alt="Water" />
             </div>
             <div className="chartTitle">
@@ -326,90 +328,90 @@ class Day extends Component {
             <div className="sectionData">
             <Bar
               data={{
-                  datasets: [
-                      {
-                          label: ["Water"],
-                          data: [this.state.waterCounter],
-                          type: 'bar',
-                          fill: false,
-                          borderColor: '#bebebe',
-                          backgroundColor: 'rgba(0, 119, 190, 1)',
-                          hoverBorderColor: '#bebebe',
-                          hoverBackgroundColor: 'rgba(77, 190, 255, 1)',
-                          yAxisID: 'y-axis-1',
-                          stack: 2
-                      },
-                      {
-                          label: ["Water Target"],
-                          data: [this.state.targetWater],
-                          type: 'bar',
-                          fill: false,
-                          borderColor: '#bebebe',
-                          backgroundColor: 'rgba(0, 119, 190, 0.3)',
-                          hoverBorderColor: '#bebebe',
-                          hoverBackgroundColor: 'rgba(77, 190, 255, 0.3)',
-                          yAxisID: 'y-axis-1',
-                          stack: 2,
-                          datalabels: {
-                              // hide datalabels for this specific dataset
-                              display: false
-                          }
-                      }
-                  ]
-              }}
-                width={100}
-                height={100}
-                options={{
-                    maintainAspectRatio: true,
-                    legend: {
+                datasets: [
+                  {
+                    label: ["Water"],
+                    data: [this.state.waterCounter],
+                    type: 'bar',
+                    fill: false,
+                    borderColor: '#bebebe',
+                    backgroundColor: 'rgba(0, 119, 190, 1)',
+                    hoverBorderColor: '#bebebe',
+                    hoverBackgroundColor: 'rgba(77, 190, 255, 1)',
+                    yAxisID: 'y-axis-1',
+                    stack: 2
+                  },
+                  {
+                    label: ["Water Target"],
+                    data: [this.state.targetWater],
+                    type: 'bar',
+                    fill: false,
+                    borderColor: '#bebebe',
+                    backgroundColor: 'rgba(0, 119, 190, 0.3)',
+                    hoverBorderColor: '#bebebe',
+                    hoverBackgroundColor: 'rgba(77, 190, 255, 0.3)',
+                    yAxisID: 'y-axis-1',
+                    stack: 2,
+                    datalabels: {
+                      // hide datalabels for this specific dataset
                       display: false
-                    },
-                      
-                      responsive: true,
-                    tooltips: {
-                      mode: 'label',
-                      backgroundColor: "black",
-                      bodyFontColor: "white"
-                    },
-                    scales: {
-                      xAxes: [{
-                        position: 'bottom',
-                        display: true,
-                        stacked: true,
-                        gridLines: {
-                          display: true
-                        },
-                        labels: ["Cups (1 cup = 8 oz.)"]
-                      }],
-                      yAxes: [
-                        {   
-                            type: 'linear',
-                            display: true,
-                            stacked: false,
-                            position: 'left',
-                            id: 'y-axis-1',
-                            gridLines: {
-                                display: false
-                            },
-                            labels: {
-                                show: true
-                            },
-                          ticks: {
-                              beginAtZero:true,
-                              suggestedMin: 0,
-                              suggestedMax: 20,
-                              precision: 0,
-                              fontColor: 'black'
-                          }
-                        }]
-                    },
-                    plugins: {
-                      datalabels: {
-                        display: true,
-                        color: 'black'
                     }
+                  }
+                ]
+              }}
+              width={100}
+              height={100}
+              options={{
+                maintainAspectRatio: true,
+                legend: {
+                  display: false
+                },
+                  responsive: true,
+                tooltips: {
+                  mode: 'label',
+                  backgroundColor: "black",
+                  bodyFontColor: "white"
+                },
+                scales: {
+                  xAxes: [{
+                    position: 'bottom',
+                    display: true,
+                    stacked: true,
+                    gridLines: {
+                      display: true
+                    },
+                    labels: ["Cups (1 cup = 8 oz.)"]
+                  }],
+                  yAxes: [
+                    {
+                      type: 'linear',
+                      display: true,
+                      stacked: false,
+                      position: 'left',
+                      id: 'y-axis-1',
+                      gridLines: {
+                          display: false
+                      },
+                      labels: {
+                          show: true
+                      },
+                      ticks: {
+                        beginAtZero:true,
+                        suggestedMin: 0,
+                        suggestedMax: 20,
+                        precision: 0,
+                        fontColor: 'black'
+                      }
                     }
-                }}
+                  ]
+                },
+                plugins: {
+                  datalabels: {
+                    display: true,
+                    color: 'black'
+                  }
+                }
+              }}
             />
             <br/>
             <div className="btn red waves-effect" onClick={this.subOneWater}>-</div>
@@ -492,58 +494,94 @@ class Day extends Component {
             <div className="sectionBG">
               <img src={workoutImg} alt="Workout" />
             </div>
+            <div className="chartTitle">
+                Workout
+            </div>
             <div className="sectionData">
               <Bar
                 data={{
-                  labels: ["Hours"],
-                  datasets: [{
-                    label: "Workout Time",
-                    borderColor: '#bebebe',
-                    backgroundColor: '#00C864',
-                    data: [this.state.workoutCounter]
-                  }]
+                  datasets: [
+                    {
+                      label: ["Workout"],
+                      data: [this.state.workoutCounter],
+                      type: 'bar',
+                      fill: false,
+                      borderColor: '#bebebe',
+                      backgroundColor: 'rgba(0, 200, 100, 1)',
+                      hoverBorderColor: '#bebebe',
+                      hoverBackgroundColor: 'rgba(0, 255, 128, 1)',
+                      yAxisID: 'y-axis-1',
+                      stack: 2
+                    },
+                    {
+                      label: ["Workout Target"],
+                      data: [this.state.targetWorkout],
+                      type: 'bar',
+                      fill: false,
+                      borderColor: '#bebebe',
+                      backgroundColor: 'rgba(0, 200, 100, 0.3)',
+                      hoverBorderColor: '#bebebe',
+                      hoverBackgroundColor: 'rgba(0, 255, 128, 0.3)',
+                      yAxisID: 'y-axis-1',
+                      stack: 2,
+                      datalabels: {
+                        // hide datalabels for this specific dataset
+                        display: false
+                      }
+                    }
+                  ]
                 }}
                 width={100}
                 height={100}
                 options={{
                   maintainAspectRatio: true,
                   legend: {
-                    labels: {
-                        boxWidth: 0,
-                        fontColor: "black",
-                        fontSize: 16
-                    }
+                    display: false
                   },
+                    responsive: true,
                   tooltips: {
+                    mode: 'label',
                     backgroundColor: "black",
                     bodyFontColor: "white"
                   },
                   scales: {
                     xAxes: [{
+                      position: 'bottom',
                       display: true,
+                      stacked: true,
                       gridLines: {
                         display: true
-                      }
+                      },
+                      labels: ["Hours"]
                     }],
-                    yAxes: [{
+                    yAxes: [
+                      {
+                        type: 'linear',
                         display: true,
+                        stacked: false,
+                        position: 'left',
+                        id: 'y-axis-1',
                         gridLines: {
-                          display: true
+                            display: false
+                        },
+                        labels: {
+                            show: true
                         },
                         ticks: {
-                            beginAtZero:true,
-                            suggestedMin: 0,
-                            suggestedMax: 4,
-                            precision: 0,
-                            fontColor: 'black'
+                          beginAtZero:true,
+                          suggestedMin: 0,
+                          suggestedMax: 5,
+                          precision: 0,
+                          fontColor: 'black'
                         }
-                      }]
+                      }
+                    ]
                   },
                   plugins: {
                     datalabels: {
                       display: true,
                       color: 'black'
-                  }
+                    }
                   }
                 }}
               />
@@ -556,58 +594,94 @@ class Day extends Component {
             <div className="sectionBG">
               <img src={sleepImg} alt="Sleep" />
             </div>
+            <div className="chartTitle">
+              Sleep Last Night
+            </div>
             <div className="sectionData">
               <Bar
                 data={{
-                  labels: ["Hours"],
-                  datasets: [{
-                    label: "Sleep Last Night",
-                    borderColor: '#bebebe',
-                    backgroundColor: '#5f6b7f',
-                    data: [this.state.sleepCounter]
-                  }]
+                  datasets: [
+                    {
+                      label: ["Sleep"],
+                      data: [this.state.sleepCounter],
+                      type: 'bar',
+                      fill: false,
+                      borderColor: '#bebebe',
+                      backgroundColor: 'rgba(95, 107, 127, 1)',
+                      hoverBorderColor: '#bebebe',
+                      hoverBackgroundColor: 'rgba(138, 151, 158, 1)',
+                      yAxisID: 'y-axis-1',
+                      stack: 2
+                    },
+                    {
+                      label: ["Sleep Target"],
+                      data: [this.state.targetSleep],
+                      type: 'bar',
+                      fill: false,
+                      borderColor: '#bebebe',
+                      backgroundColor: 'rgba(95, 107, 127, 0.3)',
+                      hoverBorderColor: '#bebebe',
+                      hoverBackgroundColor: 'rgba(138, 151, 158, 0.3)',
+                      yAxisID: 'y-axis-1',
+                      stack: 2,
+                      datalabels: {
+                        // hide datalabels for this specific dataset
+                        display: false
+                      }
+                    }
+                  ]
                 }}
                 width={100}
                 height={100}
                 options={{
                   maintainAspectRatio: true,
                   legend: {
-                    labels: {
-                        boxWidth: 0,
-                        fontColor: "black",
-                        fontSize: 16
-                    }
+                    display: false
                   },
+                    responsive: true,
                   tooltips: {
+                    mode: 'label',
                     backgroundColor: "black",
                     bodyFontColor: "white"
                   },
                   scales: {
                     xAxes: [{
+                      position: 'bottom',
                       display: true,
+                      stacked: true,
                       gridLines: {
                         display: true
-                      }
+                      },
+                      labels: ["Hours"]
                     }],
-                    yAxes: [{
+                    yAxes: [
+                      {
+                        type: 'linear',
                         display: true,
-                          gridLines: {
-                            display: true
+                        stacked: false,
+                        position: 'left',
+                        id: 'y-axis-1',
+                        gridLines: {
+                            display: false
+                        },
+                        labels: {
+                            show: true
                         },
                         ticks: {
-                            beginAtZero:true,
-                            suggestedMin: 0,
-                            suggestedMax: 9,
-                            precision: 0,
-                            fontColor: 'black'
+                          beginAtZero:true,
+                          suggestedMin: 0,
+                          suggestedMax: 9,
+                          precision: 0,
+                          fontColor: 'black'
                         }
-                      }]
+                      }
+                    ]
                   },
                   plugins: {
                     datalabels: {
                       display: true,
                       color: 'black'
-                  }
+                    }
                   }
                 }}
               />
