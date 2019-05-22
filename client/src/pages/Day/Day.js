@@ -368,7 +368,7 @@ class Day extends Component {
       <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
         <Container className="containerDay">
           <Row>
-            <Col className="s2 offset-s5 black-text center-align">
+            <Col className="s4 offset-s4 black-text center-align">
               Daily Stats
               <hr/>
             </Col>
@@ -392,10 +392,8 @@ class Day extends Component {
               <div className="btn green waves-effect next rightArrow" onClick={this.dateIncrement}>{'>'}</div>  
             </Col>
           </Row>
-          
+          <div class="divider"></div>
           <Row>
-          <hr/>
-          
           <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBGL">
               <img src={waterImg} alt="Water" />

@@ -10,7 +10,7 @@ body {
     padding: 0;
 }
 
-hr {
+hr, .divider {
     border-color: #aaaaaa;
     border-width: 1px;
     border-style: solid;
@@ -37,6 +37,8 @@ Footer {
 }
 
 .row {
+    margin: 0 auto;
+    text-align: center;
     margin: 0px;
     padding: 0px;
 }
@@ -48,7 +50,7 @@ Footer {
 @media only screen and (max-width: 600px) {
 
     .mainWrapper {
-        min-height: calc(100vh - 230px);
+        min-height: auto;
         width: 100%;
         padding: 30px 0px 0px 0px;
         margin: 0px;
@@ -57,5 +59,11 @@ Footer {
         padding: 0px;
         margin: 0px;
         width: 100%;
+    }
+    .containerWeek {
+        padding: 0px;
+        margin: 0px;
+        width: 100%;
+        /* transform: scale(1.2); */
     }
 }
