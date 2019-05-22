@@ -26,7 +26,7 @@ class About extends Component {
 
       <div className="mainWrapper" >
         <Slider className="slider">
-          <Slide image={<img src={first} />}>
+          <Slide image={<img src={first} alt="Workout"/>}>
             <Caption>
               <h3>
                 Welcome to Health Link!
@@ -36,7 +36,7 @@ class About extends Component {
               </h5>
             </Caption>
           </Slide>
-          <Slide image={<img src={backgroundImg} />}>
+          <Slide image={<img src={backgroundImg} alt="Nutrition"/>}>
             <Caption placement="left">
               <h3>
                 Eat healthier!
@@ -46,7 +46,7 @@ class About extends Component {
               </h5>
             </Caption>
           </Slide>
-          <Slide image={<img src={second} />}>
+          <Slide image={<img src={second} alt="Water"/>}>
             <Caption placement="right">
               <h3 className="light teal-text text-darken-4">
                 60% of your body is water.
@@ -56,7 +56,7 @@ class About extends Component {
               </h5>
             </Caption>
           </Slide>
-          <Slide image={<img src={third} />}>
+          <Slide image={<img src={third} alt="Sleep"/>}>
             <Caption>
               <h3>
                 But a healthier life includes sleep too!
@@ -83,7 +83,7 @@ class About extends Component {
           </Row>
           <Row className="health"> 
             
-            <img src={fourth} />
+            <img src={fourth} alt="Health"/>
 
           </Row>
         </Container>
