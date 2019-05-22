@@ -322,10 +322,10 @@ class Day extends Component {
   // finally{
     if (table.length > 0){
       return (
-        <Table key={j}>
+        <Table>
           <caption>Today's Meals</caption>
           <thead>
-            <tr key={j}>
+            <tr>
               <th>
                 Food
               </th>
@@ -343,7 +343,7 @@ class Day extends Component {
               </th>
             </tr>
           </thead>
-          <tbody key={j}>
+          <tbody>
             {table}
           </tbody>
         </Table>
