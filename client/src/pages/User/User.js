@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, TextInput, Icon, Select } from "react-materialize";
 import API from "../../utils/API";
-import { withRouter } from 'react-router-dom';
 import withAuth from './../../components/withAuth';
 import helper from '../../helpers/calculations';
 import moment from "moment";
@@ -184,4 +183,4 @@ class User extends Component {
   }
 }
 
-export default withRouter(withAuth(User));
+export default withAuth(User);
