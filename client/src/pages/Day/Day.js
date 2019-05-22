@@ -383,7 +383,7 @@ class Day extends Component {
                 onChange={this.handleDateChange}
               />
             </Col>
-            <Col className="s4 black-text center-align">
+            <Col className="s3 offset-s1 black-text center-align">
               Calories
               <br/>
               {this.state.caloriesCounter} / {this.state.maxCalories}
@@ -396,7 +396,7 @@ class Day extends Component {
           <Row>
           <hr/>
           
-          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBGL">
               <img src={waterImg} alt="Water" />
             </div>
@@ -496,7 +496,7 @@ class Day extends Component {
             <div className="btn green waves-effect" onClick={this.addOneWater}>+</div>
             </div>
           </Col>
-          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBGPie">
               <img src={nutritionImg} alt="Nutrition" />
             </div>
@@ -576,7 +576,7 @@ class Day extends Component {
           </Col>
           </Row>
           <Row>
-          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             
             <div className="sectionBG">
               <img src={workoutImg} alt="Workout" />
@@ -677,7 +677,7 @@ class Day extends Component {
               <div className="btn green waves-effect" onClick={this.addOneHourW}>+</div>
             </div>
           </Col>
-          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBG">
               <img src={sleepImg} alt="Sleep" />
             </div>
