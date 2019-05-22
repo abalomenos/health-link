@@ -283,7 +283,7 @@ class Week extends Component {
                                           ]
                                         }}
                                         width={100}
-                                        height={60}
+                                        height={70}
                                         options={{
                                             maintainAspectRatio: true,
                                             legend: {
