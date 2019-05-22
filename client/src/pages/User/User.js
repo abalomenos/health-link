@@ -7,8 +7,6 @@ import moment from "moment";
 
 import './User.css';
 
-const health = require("healthstats");
-
 // Images
 const backgroundImg ='./assets/images/background1.jpg';
 
@@ -25,8 +23,6 @@ class User extends Component {
     activity: "",
     exercise: "",
     sleep: "",
-    gender: "",
-    activity: "",
     gender: ""
   };
 
@@ -155,7 +151,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <Select m={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level" name = "activity">
-                  <option value="sSedentary">Sedentary</option>
+                  <option value="Sedentary">Sedentary</option>
                   <option value="Light">Light</option>
                   <option value="Moderate">Moderate</option>
                   <option value="Very Active">Very Active</option>

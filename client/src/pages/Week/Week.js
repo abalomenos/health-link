@@ -143,16 +143,16 @@ class Week extends Component {
             <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
                     <Container className="containerWeek">
                         <Row>
-                          <Col className="s1 black-text center-align">
+                          {/* <Col className="s1 black-text center-align">
                             <div className="btn green waves-effect prev leftArrow">{'<'}</div>
-                          </Col>
-                            <Col className="s2 offset-s4 black-text center-align">
+                          </Col> */}
+                            <Col className="s2 offset-s5 black-text center-align">
                             Weekly Stats
                             <hr/>
                             </Col>
-                            <Col className="s1 offset-s4 black-text center-align">
+                            {/* <Col className="s1 offset-s4 black-text center-align">
                               <div className="btn green waves-effect next rightArrow" >{'>'}</div>  
-                            </Col>
+                            </Col> */}
                         </Row>
                         <Row>
                             <Col className="s10 offset-s1 black-text center-align">
@@ -167,7 +167,7 @@ class Week extends Component {
                                             fill: false,
                                             borderWidth: 2,
                                             borderColor: 'rgba(105, 78, 47, 1)',
-                                            backgroundColor: 'rgba(224, 167, 101, 1)',
+                                            backgroundColor: 'rgba(224, 167, 101, 0.3)',
                                             pointBorderColor: 'rgba(74, 55, 33, 1)',
                                             pointBackgroundColor: 'rgba(74, 55, 33, 1)',
                                             pointHoverBorderColor: 'rgba(181, 135, 81, 1)',
@@ -182,7 +182,7 @@ class Week extends Component {
                                             borderWidth: 2,
                                             pointBorderWidth: 0,
                                             borderDash: [10, 10],
-                                            borderColor: 'rgba(105, 78, 47, 0.3)',
+                                            borderColor: 'rgba(105, 78, 47, 0.6)',
                                             backgroundColor: 'rgba(224, 167, 101, 0.3)',
                                             pointBorderColor: 'rgba(74, 55, 33, 0.3)',
                                             pointBackgroundColor: 'rgba(74, 55, 33, 0.3)',
@@ -338,7 +338,7 @@ class Week extends Component {
                                                 {   
                                                     type: 'linear',
                                                     display: true,
-                                                    stacked: true,
+                                                    stacked: false,
                                                     position: 'left',
                                                     id: 'y-axis-1',
                                                     gridLines: {
