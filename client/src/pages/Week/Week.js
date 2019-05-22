@@ -3,6 +3,7 @@ import {Bar} from 'react-chartjs-2';
 import 'chartjs-plugin-datalabels';
 import {Container, Row, Col} from 'react-materialize';
 import API from "../../utils/API";
+import { withRouter } from 'react-router-dom';
 import withAuth from './../../components/withAuth';
 import moment from "moment";
 
@@ -396,4 +397,4 @@ class Week extends Component {
   
 
 
-export default withAuth(Week);
+export default withRouter(withAuth(Week));

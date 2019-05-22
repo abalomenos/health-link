@@ -4,6 +4,7 @@ import 'chartjs-plugin-datalabels';
 import {Container, Row, Col, Modal, TextInput, Button, Icon, Table} from 'react-materialize';
 import DatePicker from "react-datepicker";
 import API from "../../utils/API";
+import { withRouter } from 'react-router-dom';
 import withAuth from './../../components/withAuth';
 import moment from "moment";
 
@@ -373,12 +374,10 @@ class Day extends Component {
             </Col>
           </Row>
           <Row>
-          
-          
             <Col className="s1 black-text center-align">
               <div className="btn green waves-effect prev leftArrow" onClick={this.dateDecrement}>{'<'}</div>
             </Col>
-            <Col className="s4 offset-s2 black-text center-align">
+            <Col className="s4 offset-s1 black-text center-align">
               <DatePicker
                 selected={this.state.startDate}
                 onChange={this.handleDateChange}
@@ -786,5 +785,5 @@ class Day extends Component {
   }
 }
 
-export default withAuth(Day);
+export default withRouter(withAuth(Day));
 

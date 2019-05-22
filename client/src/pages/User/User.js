@@ -182,4 +182,4 @@ class User extends Component {
   }
 }
 
-export default withAuth(User);
+export default withRouter(withAuth(User));
