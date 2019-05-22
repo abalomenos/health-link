@@ -28,7 +28,7 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sampleusers";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
-require("./routes")(app)
+
 
 app.post('/api/users', (req, res) => {
   db.User
