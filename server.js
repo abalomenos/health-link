@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require('./models');
-const routes = require("./routes");
 const mongoose = require("mongoose");
+const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
 
@@ -24,7 +24,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // Add routes, both API and view	
-app.use(routes);
+// app.use(routes);
 
 // Connect to the Mongo DB - try Heroku first
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sampleusers";
