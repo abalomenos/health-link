@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {Footer, Row, Col, Container} from 'react-materialize';
+import {Footer, Row, Container} from 'react-materialize';
 
 import './Footer.css';
 
@@ -12,7 +12,7 @@ class Foot extends Component {
                     copyrights= {
                         `Health Link \u00A9 2019`
                     }
-                    moreLinks={<a />}
+                    // moreLinks={<a />}
                     links={
                         <ul>
                             <p className="center-align">
@@ -27,8 +27,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://www.linkedin.com/in/argirisbalomenos" target="_blank" title="Connect with me on LinkedIn">
-                                            <i class="fab fa-linkedin-in"></i>
+                                        <a href="https://www.linkedin.com/in/argirisbalomenos" target="_blank" rel="noopener noreferrer" title="Connect with me on LinkedIn">
+                                            <i className="fab fa-linkedin-in"></i>
                                             <br/>
                                             LinkedIn
                                         </a>
@@ -36,8 +36,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://github.com/abalomenos" target="_blank" title="View more Projects on GitHub">
-                                            <i class="fab fa-github"></i>
+                                        <a href="https://github.com/abalomenos" target="_blank" rel="noopener noreferrer" title="View more Projects on GitHub">
+                                            <i className="fab fa-github"></i>
                                             <br/>
                                             GitHub
                                         </a>
@@ -52,8 +52,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://www.linkedin.com/in/charles-glass-57512412a/" target="_blank" title="Connect with me on LinkedIn">
-                                            <i class="fab fa-linkedin-in"></i>
+                                        <a href="https://www.linkedin.com/in/charles-glass-57512412a/" target="_blank" rel="noopener noreferrer" title="Connect with me on LinkedIn">
+                                            <i className="fab fa-linkedin-in"></i>
                                             <br/>
                                             LinkedIn
                                         </a>
@@ -61,8 +61,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://github.com/charliedglass" target="_blank" title="View more Projects on GitHub">
-                                            <i class="fab fa-github"></i>
+                                        <a href="https://github.com/charliedglass" target="_blank" rel="noopener noreferrer" title="View more Projects on GitHub">
+                                            <i className="fab fa-github"></i>
                                             <br/>
                                             GitHub
                                         </a>
@@ -77,8 +77,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://www.linkedin.com/in/annie-jackson-750/" target="_blank" title="Connect with me on LinkedIn">
-                                            <i class="fab fa-linkedin-in"></i>
+                                        <a href="https://www.linkedin.com/in/annie-jackson-750/" target="_blank" rel="noopener noreferrer" title="Connect with me on LinkedIn">
+                                            <i className="fab fa-linkedin-in"></i>
                                             <br/>
                                             LinkedIn
                                         </a>
@@ -86,8 +86,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://github.com/jacksona750" target="_blank" title="View more Projects on GitHub">
-                                            <i class="fab fa-github"></i>
+                                        <a href="https://github.com/jacksona750" target="_blank" rel="noopener noreferrer" title="View more Projects on GitHub">
+                                            <i className="fab fa-github"></i>
                                             <br/>
                                             GitHub
                                         </a>
@@ -102,8 +102,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://www.linkedin.com/in/irene-villafane-868181130/" target="_blank" title="Connect with me on LinkedIn">
-                                            <i class="fab fa-linkedin-in"></i>
+                                        <a href="https://www.linkedin.com/in/irene-villafane-868181130/" target="_blank" rel="noopener noreferrer" title="Connect with me on LinkedIn">
+                                            <i className="fab fa-linkedin-in"></i>
                                             <br/>
                                             LinkedIn
                                         </a>
@@ -111,8 +111,8 @@ class Foot extends Component {
                                 </ul>
                                 <ul>
                                     <li>
-                                        <a href="https://github.com/ivillafanesanz" target="_blank" title="View more Projects on GitHub">
-                                            <i class="fab fa-github"></i>
+                                        <a href="https://github.com/ivillafanesanz" target="_blank" rel="noopener noreferrer" title="View more Projects on GitHub">
+                                            <i className="fab fa-github"></i>
                                             <br/>
                                             GitHub
                                         </a>

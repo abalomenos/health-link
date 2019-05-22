@@ -36,7 +36,7 @@ class Nav extends Component {
   
   componentDidMount() {
     window.addEventListener("resize", this.updateWidth);
-    console.log(JSON.stringify(this.state));
+    // console.log(JSON.stringify(this.state));
   }
   
     updateWidth = () => {
@@ -54,18 +54,6 @@ class Nav extends Component {
       this.setState({
           [name]: value
       });
-      const height = parseInt(this.state.height);
-      const weight = parseInt(this.state.weight);
-      const age = parseInt(this.state.age);
-      const gender = this.state.gender;
-      const activity = this.state.activity;
-      // this.setState({
-      //   BMI: Math.round(helper.calculateBMI(height, weight)*10)/10,
-      //   water_goal: Math.round(helper.calculateWaterGoal(weight)),
-      //   intake_goal: Math.round(helper.calculateCalorieRec(weight, height, age, gender, activity))
-      // });
-      console.log(event.target);
-      console.log(this.state);
     };
 
     
@@ -114,7 +102,7 @@ class Nav extends Component {
     componentWillMount() {
       if (this.Auth.loggedIn() && this.props.history.location.pathname === '/') {
         this.props.history.replace('/day');
-        console.log("history " + JSON.stringify(this.props.history));
+        // console.log("history " + JSON.stringify(this.props.history));
       }
     }
   
