@@ -23,11 +23,12 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
+// Add routes, both API and view	
+app.use(routes);
+
 // Connect to the Mongo DB - try Heroku first
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sampleusers";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
-
-// Routes
 
 
 app.post('/api/users', (req, res) => {
