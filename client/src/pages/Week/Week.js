@@ -146,7 +146,7 @@ class Week extends Component {
                           {/* <Col className="s1 black-text center-align">
                             <div className="btn green waves-effect prev leftArrow">{'<'}</div>
                           </Col> */}
-                            <Col className="s2 offset-s5 black-text center-align">
+                            <Col className="s4 offset-s4 black-text center-align">
                             Weekly Stats
                             <hr/>
                             </Col>

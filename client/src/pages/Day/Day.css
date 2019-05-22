@@ -9,26 +9,14 @@
     background-color: #000000;
 }
 
-/* .leftArrow {
-    position: absolute;
-    top: 50%;
-    left: 10px;
-}
-
-.rightArrow {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-} */
 .graphContainer {
     position: relative;
-    /* height: 100%;
-    width: 100%; */
     background-color: rgb(233, 233, 233);
     z-index: 2;
     border-color: #aaaaaa;
     border-width: 1px;
     border-style: solid;
+    margin: 10px;
 }
 
 .sectionBG img {
