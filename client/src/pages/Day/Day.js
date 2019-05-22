@@ -10,8 +10,6 @@ import moment from "moment";
 // CSS
 import "react-datepicker/dist/react-datepicker.css";
 import './Day.css';
-import { SSL_OP_SSLEAY_080_CLIENT_DH_BUG } from "constants";
-import Tab from "react-materialize/lib/Tab";
 
 // Images
 const workoutImg = "./assets/images/workout1.jpg";
@@ -89,9 +87,9 @@ class Day extends Component {
           maxCalories: res.data.intake_goal
         }
       );
-      console.log(res.data);
-      console.log(moment().subtract(10,"days").format("YYYY-MMDD"));
-      console.log(this.state);
+      // console.log(res.data);
+      // console.log(moment().subtract(10,"days").format("YYYY-MMDD"));
+      // console.log(this.state);
     });
   };
 
@@ -104,7 +102,7 @@ class Day extends Component {
   dateIncrement() {
     var newDate = this.state.date;
     newDate.setDate(newDate.getDate()+1);
-    console.log(newDate.toDateString())
+    // console.log(newDate.toDateString())
     this.handleDateChange(newDate);
   }
 
@@ -169,7 +167,7 @@ class Day extends Component {
 
   addOneWater() {
     this.setState((prevState) => {
-      console.log(this.state.waterCounter);
+      // console.log(this.state.waterCounter);
       return {
         waterCounter : prevState.waterCounter + 1
         };
@@ -233,7 +231,7 @@ class Day extends Component {
     if (isIntake && !foundDate){
       metricOfInterest = [0,0,0,0];
     }
-    console.log({foundDate: foundDate, isIntake: isIntake, arr: progressArrCopy, metric: metricOfInterest});
+    // console.log({foundDate: foundDate, isIntake: isIntake, arr: progressArrCopy, metric: metricOfInterest});
     return {foundDate: foundDate, isIntake: isIntake, arr: progressArrCopy, metric: metricOfInterest};
   }
 
@@ -241,15 +239,15 @@ class Day extends Component {
     var progressArr = this.state[metricName];
     var findData = {};
     
-    if (metricName != 'intake_progress'){
+    if (metricName !== 'intake_progress'){
       findData = this.findMetric(progressArr, dateString, metric, true, false);
     }
     else {
       findData = this.findMetric(progressArr, dateString, metric, true, true);
     }
     var arrCopy = findData.arr;
-    console.log(findData);
-    console.log(arrCopy);
+    // console.log(findData);
+    // console.log(arrCopy);
 
     if (!findData.foundDate && !findData.isIntake) {
       arrCopy.push({"metric": metric, "date": this.state.date, "date_string": dateString});
@@ -261,11 +259,11 @@ class Day extends Component {
     this.setState({
       metricName: arrCopy
     });
-    console.log(this.state);
+    // console.log(this.state);
 
     var resData = {};
     resData[metricName] = arrCopy;
-    console.log(resData);
+    // console.log(resData);
 
     API.updateUser(this.props.user.id, resData);
   };
@@ -295,23 +293,23 @@ class Day extends Component {
       if (this.state.dateString === this.state.intake_progress[i].date_string){
         for (var j = 0; j < this.state.intake_progress[i].food.length; j++){
           let children = [];
-          children.push(<td>
+          children.push(<td key={this.state.intake_progress[i].food[j]}>
             {this.state.intake_progress[i].food[j]}
             </td>);
-          children.push(<td>
+          children.push(<td key={this.state.intake_progress[i].caloriesArr[j]}>
             {this.state.intake_progress[i].caloriesArr[j]}
             </td>);
-          children.push(<td>
+          children.push(<td key={this.state.intake_progress[i].proteinArr[j]}>
             {this.state.intake_progress[i].proteinArr[j]}
             </td>);
-          children.push(<td>
+          children.push(<td key={this.state.intake_progress[i].fatArr[j]}>
             {this.state.intake_progress[i].fatArr[j]}
             </td>);
-          children.push(<td>
+          children.push(<td key={this.state.intake_progress[i].carbsArr[j]}>
             {this.state.intake_progress[i].carbsArr[j]}
             </td>);
           table.push(
-            <tr>
+            <tr key={j}>
               {children}
             </tr>
           );
@@ -327,21 +325,23 @@ class Day extends Component {
         <Table>
           <caption>Today's Meals</caption>
           <thead>
-            <th>
-              Food
-            </th>
-            <th>
-              Calories
-            </th>
-            <th>
-              Protein
-            </th>
-            <th>
-              Fat
-            </th>
-            <th>
-              Carbs
-            </th>
+            <tr>
+              <th>
+                Food
+              </th>
+              <th>
+                Calories
+              </th>
+              <th>
+                Protein
+              </th>
+              <th>
+                Fat
+              </th>
+              <th>
+                Carbs
+              </th>
+            </tr>
           </thead>
           <tbody>
             {table}
@@ -359,7 +359,7 @@ class Day extends Component {
     this.setState({
         [name]: value
     });
-    console.log(this.state);
+    // console.log(this.state);
   };
   
   render() {
@@ -378,7 +378,7 @@ class Day extends Component {
             <Col className="s1 black-text center-align">
               <div className="btn green waves-effect prev leftArrow" onClick={this.dateDecrement}>{'<'}</div>
             </Col>
-            <Col className="s4 offset-s1 black-text center-align">
+            <Col className="s4 offset-s2 black-text center-align">
               <DatePicker
                 selected={this.state.startDate}
                 onChange={this.handleDateChange}
@@ -426,9 +426,9 @@ class Day extends Component {
                     type: 'bar',
                     fill: false,
                     borderColor: '#bebebe',
-                    backgroundColor: 'rgba(0, 119, 190, 0.3)',
+                    backgroundColor: 'rgba(0, 119, 190, 0.5)',
                     hoverBorderColor: '#bebebe',
-                    hoverBackgroundColor: 'rgba(77, 190, 255, 0.3)',
+                    hoverBackgroundColor: 'rgba(77, 190, 255, 0.5)',
                     yAxisID: 'y-axis-1',
                     stack: 2,
                     datalabels: {
@@ -497,7 +497,7 @@ class Day extends Component {
             <div className="btn green waves-effect" onClick={this.addOneWater}>+</div>
             </div>
           </Col>
-          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBGPie">
               <img src={nutritionImg} alt="Nutrition" />
             </div>
@@ -607,9 +607,9 @@ class Day extends Component {
                       type: 'bar',
                       fill: false,
                       borderColor: '#bebebe',
-                      backgroundColor: 'rgba(0, 200, 100, 0.3)',
+                      backgroundColor: 'rgba(0, 200, 100, 0.5)',
                       hoverBorderColor: '#bebebe',
-                      hoverBackgroundColor: 'rgba(0, 255, 128, 0.3)',
+                      hoverBackgroundColor: 'rgba(0, 255, 128, 0.5)',
                       yAxisID: 'y-axis-1',
                       stack: 2,
                       datalabels: {
@@ -678,7 +678,7 @@ class Day extends Component {
               <div className="btn green waves-effect" onClick={this.addOneHourW}>+</div>
             </div>
           </Col>
-          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBG">
               <img src={sleepImg} alt="Sleep" />
             </div>
@@ -707,9 +707,9 @@ class Day extends Component {
                       type: 'bar',
                       fill: false,
                       borderColor: '#bebebe',
-                      backgroundColor: 'rgba(95, 107, 127, 0.3)',
+                      backgroundColor: 'rgba(95, 107, 127, 0.5)',
                       hoverBorderColor: '#bebebe',
-                      hoverBackgroundColor: 'rgba(138, 151, 158, 0.3)',
+                      hoverBackgroundColor: 'rgba(138, 151, 158, 0.5)',
                       yAxisID: 'y-axis-1',
                       stack: 2,
                       datalabels: {

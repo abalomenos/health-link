@@ -1,6 +1,5 @@
 const express = require("express");
 const db = require('./models');
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
 const app = express();
@@ -23,18 +22,14 @@ app.use((req, res, next) => {
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
+
+// Add routes, both API and view	
 // app.use(routes);
 
-// Define local MongoDB URI
-var databaseUri = "mongodb://localhost/sampleusers";
+// Connect to the Mongo DB - try Heroku first
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sampleusers";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
-// Connect to the Mongo DB
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(databaseUri);
-}
 
 app.post('/api/users', (req, res) => {
   db.User
@@ -73,3 +68,5 @@ app.put('/api/users/:id', (req, res) => {
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+module.exports = app;
