@@ -148,6 +148,7 @@ class Nav extends Component {
                   <option value="Very Active">Very Active</option>
                   <option value="Extremely Active">Extremely Active</option>
                 </Select>
+                <br/>
                 <Select value={this.state.gender} onChange={this.handleChange} label="Gender" name="gender">
                 <option value="" disabled>Choose an option</option>
                   <option value="Male">Male</option>

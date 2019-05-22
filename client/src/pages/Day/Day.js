@@ -4,6 +4,7 @@ import 'chartjs-plugin-datalabels';
 import {Container, Row, Col, Modal, TextInput, Button, Icon, Table} from 'react-materialize';
 import DatePicker from "react-datepicker";
 import API from "../../utils/API";
+import { withRouter } from 'react-router-dom';
 import withAuth from './../../components/withAuth';
 import moment from "moment";
 
@@ -367,24 +368,22 @@ class Day extends Component {
       <div className="mainWrapper" style={{ backgroundImage: `url(${backgroundImg})` }}>
         <Container className="containerDay">
           <Row>
-            <Col className="s2 offset-s5 black-text center-align">
+            <Col className="s4 offset-s4 black-text center-align">
               Daily Stats
               <hr/>
             </Col>
           </Row>
           <Row>
-          
-          
             <Col className="s1 black-text center-align">
               <div className="btn green waves-effect prev leftArrow" onClick={this.dateDecrement}>{'<'}</div>
             </Col>
-            <Col className="s4 offset-s2 black-text center-align">
+            <Col className="s4 offset-s1 black-text center-align">
               <DatePicker
                 selected={this.state.startDate}
                 onChange={this.handleDateChange}
               />
             </Col>
-            <Col className="s4 black-text center-align">
+            <Col className="s3 offset-s1 black-text center-align">
               Calories
               <br/>
               {this.state.caloriesCounter} / {this.state.maxCalories}
@@ -393,11 +392,9 @@ class Day extends Component {
               <div className="btn green waves-effect next rightArrow" onClick={this.dateIncrement}>{'>'}</div>  
             </Col>
           </Row>
-          
+          <div class="divider"></div>
           <Row>
-          <hr/>
-          
-          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBGL">
               <img src={waterImg} alt="Water" />
             </div>
@@ -497,7 +494,7 @@ class Day extends Component {
             <div className="btn green waves-effect" onClick={this.addOneWater}>+</div>
             </div>
           </Col>
-          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBGPie">
               <img src={nutritionImg} alt="Nutrition" />
             </div>
@@ -577,7 +574,7 @@ class Day extends Component {
           </Col>
           </Row>
           <Row>
-          <Col className="l4 offset-l1 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             
             <div className="sectionBG">
               <img src={workoutImg} alt="Workout" />
@@ -678,7 +675,7 @@ class Day extends Component {
               <div className="btn green waves-effect" onClick={this.addOneHourW}>+</div>
             </div>
           </Col>
-          <Col className="l4 offset-l2 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
+          <Col className="l4 m8 offset-m2 s10 offset-s1 black-text center-align graphContainer">
             <div className="sectionBG">
               <img src={sleepImg} alt="Sleep" />
             </div>
@@ -786,5 +783,5 @@ class Day extends Component {
   }
 }
 
-export default withAuth(Day);
+export default withRouter(withAuth(Day));
 

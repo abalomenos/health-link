@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Container, Row, Col, Button, TextInput, Icon, Select } from "react-materialize";
 import API from "../../utils/API";
+import { withRouter } from 'react-router-dom';
 import withAuth from './../../components/withAuth';
 import helper from '../../helpers/calculations';
 import moment from "moment";
@@ -107,7 +108,7 @@ class User extends Component {
           <Row className="userFormSection">
             <Col className="s12 center-align">
                 <TextInput 
-                  m={12} 
+                  s={12} 
                   value={this.state.name}
                   onChange={this.handleInputChange}
                   name="name"
@@ -118,7 +119,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
-                  m={12} 
+                  s={12} 
                   value={this.state.age}
                   onChange={this.handleInputChange}
                   name="age"
@@ -129,7 +130,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
-                  m={12} 
+                  s={12} 
                   value={this.state.weight}
                   onChange={this.handleInputChange}
                   name="weight"
@@ -140,7 +141,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
-                  m={12} 
+                  s={12} 
                   value={this.state.height}
                   onChange={this.handleInputChange}
                   name="height"
@@ -150,7 +151,7 @@ class User extends Component {
             </Row>
             <Row>
               <Col className="s12 center-align">
-                <Select m={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level" name = "activity">
+                <Select s={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level" name = "activity">
                   <option value="Sedentary">Sedentary</option>
                   <option value="Light">Light</option>
                   <option value="Moderate">Moderate</option>
@@ -159,9 +160,10 @@ class User extends Component {
                 </Select>
                 </Col>
             </Row>
+            <br/>
             <Row>
               <Col className="s12 center-align">
-                <Select m={12} value={this.state.gender} onChange={this.handleSelectChange} label="Gender" name="gender">
+                <Select s={12} value={this.state.gender} onChange={this.handleSelectChange} label="Gender" name="gender">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </Select>
@@ -182,4 +184,4 @@ class User extends Component {
   }
 }
 
-export default withAuth(User);
+export default withRouter(withAuth(User));
