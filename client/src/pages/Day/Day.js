@@ -4,7 +4,6 @@ import 'chartjs-plugin-datalabels';
 import {Container, Row, Col, Modal, TextInput, Button, Icon, Table} from 'react-materialize';
 import DatePicker from "react-datepicker";
 import API from "../../utils/API";
-import { withRouter } from 'react-router-dom';
 import withAuth from './../../components/withAuth';
 import moment from "moment";
 
@@ -783,5 +782,5 @@ class Day extends Component {
   }
 }
 
-export default withRouter(withAuth(Day));
+export default withAuth(Day);
 
