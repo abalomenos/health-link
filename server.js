@@ -1,10 +1,9 @@
 const express = require("express");
 const db = require('./models');
-
 const mongoose = require("mongoose");
-const routes = require("./routes");
 const app = express();
 const PORT = process.env.PORT || 3001;
+const path = require("path");
 
 const isAuthenticated = require("./config/isAuthenticated");
 const auth = require("./config/auth");
@@ -19,29 +18,16 @@ app.use((req, res, next) => {
   next();
 });
 
+
+// Connect to the Mongo DB - try Heroku first
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sampleusers";
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-// app.use(routes);
 
-// Define local MongoDB URI
-var databaseUri = "mongodb://localhost/sampleusers";
-
-// Connect to the Mongo DB
-if (process.env.MONGODB_URI) {
-  mongoose.connect(process.env.MONGODB_URI);
-} else {
-  mongoose.connect(databaseUri);
-}
-
-app.post('/api/users', (req, res) => {
-  db.User
-      .create(req.body)
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-});
 
 // LOGIN ROUTE
 app.post('/api/users/login', (req, res) => {
@@ -49,6 +35,13 @@ app.post('/api/users/login', (req, res) => {
     .logUserIn(req.body.email, req.body.password)
     .then(dbUser => res.json(dbUser))
     .catch(err => res.status(400).json(err));
+});
+
+app.post('/api/users', (req, res) => {
+  db.User
+      .create(req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
 });
 
 app.get('/api/users/:id', isAuthenticated, (req, res) => {
@@ -69,7 +62,15 @@ app.put('/api/users/:id', (req, res) => {
 });
 
 
+app.get('*', function (req, res) {
+  res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+});
+
+
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+  console.log(__dirname);
 });
+
+module.exports = app;

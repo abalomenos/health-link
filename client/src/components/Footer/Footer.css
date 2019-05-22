@@ -24,10 +24,13 @@
 
 .teamMember {
     min-width: 135px;
+    text-align: left;
 }
 .footer ul {
     display: table-cell;
     vertical-align: middle;
+    margin: 0;
+    padding: 0;
 }
 
 .footer a {
@@ -44,6 +47,4 @@
 }
 .text{
     text-align: left;
-    
-    margin-left: -100px;
 }

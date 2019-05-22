@@ -22,12 +22,21 @@ class Nav extends Component {
       activity: "",
       gender: ""
     };
+
+    this.activityToExercise = {
+      "Sedentary": 0,
+      "Light": 1,
+      "Moderate": 2,
+      "Very Active": 3,
+      "Extremely Active": 4
+    };
   }
+
 
   
   componentDidMount() {
     window.addEventListener("resize", this.updateWidth);
-    console.log(JSON.stringify(this.state));
+    // console.log(JSON.stringify(this.state));
   }
   
     updateWidth = () => {
@@ -45,18 +54,6 @@ class Nav extends Component {
       this.setState({
           [name]: value
       });
-      const height = parseInt(this.state.height);
-      const weight = parseInt(this.state.weight);
-      const age = parseInt(this.state.age);
-      const gender = this.state.gender;
-      const activity = this.state.activity;
-      // this.setState({
-      //   BMI: Math.round(helper.calculateBMI(height, weight)*10)/10,
-      //   water_goal: Math.round(helper.calculateWaterGoal(weight)),
-      //   intake_goal: Math.round(helper.calculateCalorieRec(weight, height, age, gender, activity))
-      // });
-      console.log(event.target);
-      console.log(this.state);
     };
 
     
@@ -88,7 +85,7 @@ class Nav extends Component {
       //   water_goal: water_goal,
       //   intake_goal: intake_goal
       // })
-      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height, this.state.gender, this.state.activity, BMI, water_goal, intake_goal)
+      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height, this.state.gender, this.state.activity, this.activityToExercise[this.state.activity], BMI, water_goal, intake_goal)
         .then(res => {
           // once the user has signed up
           // log them in
@@ -105,7 +102,7 @@ class Nav extends Component {
     componentWillMount() {
       if (this.Auth.loggedIn() && this.props.history.location.pathname === '/') {
         this.props.history.replace('/day');
-        console.log("history " + JSON.stringify(this.props.history));
+        // console.log("history " + JSON.stringify(this.props.history));
       }
     }
   
@@ -151,6 +148,7 @@ class Nav extends Component {
                   <option value="Very Active">Very Active</option>
                   <option value="Extremely Active">Extremely Active</option>
                 </Select>
+                <br/>
                 <Select value={this.state.gender} onChange={this.handleChange} label="Gender" name="gender">
                 <option value="" disabled>Choose an option</option>
                   <option value="Male">Male</option>

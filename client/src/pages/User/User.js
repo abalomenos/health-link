@@ -7,8 +7,6 @@ import moment from "moment";
 
 import './User.css';
 
-const health = require("healthstats");
-
 // Images
 const backgroundImg ='./assets/images/background1.jpg';
 
@@ -26,6 +24,14 @@ class User extends Component {
     exercise: "",
     sleep: "",
     gender: ""
+  };
+
+  activityToExercise = {
+    "Sedentary": 0,
+    "Light": 1,
+    "Moderate": 2,
+    "Very Active": 3,
+    "Extremely Active": 4
   };
 
   componentDidMount() {
@@ -77,6 +83,7 @@ class User extends Component {
       height: this.state.height, 
       gender: this.state.gender, 
       activity: this.state.activity, 
+      exercise_goal: this.activityToExercise[this.state.activity],
       BMI: BMI, 
       water_goal: water_goal, 
       intake_goal: intake_goal
@@ -100,7 +107,7 @@ class User extends Component {
           <Row className="userFormSection">
             <Col className="s12 center-align">
                 <TextInput 
-                  m={12} 
+                  s={12} 
                   value={this.state.name}
                   onChange={this.handleInputChange}
                   name="name"
@@ -111,7 +118,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
-                  m={12} 
+                  s={12} 
                   value={this.state.age}
                   onChange={this.handleInputChange}
                   name="age"
@@ -122,7 +129,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
-                  m={12} 
+                  s={12} 
                   value={this.state.weight}
                   onChange={this.handleInputChange}
                   name="weight"
@@ -133,7 +140,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
-                  m={12} 
+                  s={12} 
                   value={this.state.height}
                   onChange={this.handleInputChange}
                   name="height"
@@ -143,18 +150,19 @@ class User extends Component {
             </Row>
             <Row>
               <Col className="s12 center-align">
-                <Select m={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level">
-                  <option value="sedentary">Sedentary</option>
-                  <option value="light">Light</option>
-                  <option value="moderate">Moderate</option>
-                  <option value="veryActive">Very Active</option>
-                  <option value="extremelyActive">Extremely Active</option>
+                <Select s={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level" name = "activity">
+                  <option value="Sedentary">Sedentary</option>
+                  <option value="Light">Light</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Very Active">Very Active</option>
+                  <option value="Extremely Active">Extremely Active</option>
                 </Select>
                 </Col>
             </Row>
+            <br/>
             <Row>
               <Col className="s12 center-align">
-                <Select m={12} value={this.state.gender} onChange={this.handleSelectChange} label="Activity Level">
+                <Select s={12} value={this.state.gender} onChange={this.handleSelectChange} label="Gender" name="gender">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </Select>
