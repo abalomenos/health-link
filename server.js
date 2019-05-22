@@ -28,6 +28,8 @@ var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/sampleusers";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 // Routes
+require("./routes")(app)
+
 app.post('/api/users', (req, res) => {
   db.User
       .create(req.body)
@@ -65,3 +67,5 @@ app.put('/api/users/:id', (req, res) => {
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
+
+module.exports = app;
