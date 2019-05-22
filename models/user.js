@@ -28,7 +28,7 @@ const UserSchema = new Schema({
     date_string: String
     }
   ],
-  exercise_goal: {type: Number, default: 2}, 
+  exercise_goal: {type: Number}, 
   exercise_progress: [
     {
     metric: { type: Number },
@@ -43,6 +43,11 @@ const UserSchema = new Schema({
     protein: { type: Number },
     fat: { type: Number },
     carbs: { type: Number },
+    caloriesArr: [{type: Number}],
+    proteinArr: [{type: Number}],
+    fatArr: [{type: Number}],
+    carbsArr: [{type: Number}],
+    food: [{type: String}],
     date: {type: Date},
     date_string: String
     }

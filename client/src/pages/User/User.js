@@ -25,7 +25,17 @@ class User extends Component {
     activity: "",
     exercise: "",
     sleep: "",
+    gender: "",
+    activity: "",
     gender: ""
+  };
+
+  activityToExercise = {
+    "Sedentary": 0,
+    "Light": 1,
+    "Moderate": 2,
+    "Very Active": 3,
+    "Extremely Active": 4
   };
 
   componentDidMount() {
@@ -47,6 +57,7 @@ class User extends Component {
     });
   };
 
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -54,8 +65,12 @@ class User extends Component {
     });
   };
 
-  handleSelectChange(event) {
-    this.setState({value: event.target.value});
+  handleSelectChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
   }
 
   handleFormSubmit = event => {
@@ -72,6 +87,7 @@ class User extends Component {
       height: this.state.height, 
       gender: this.state.gender, 
       activity: this.state.activity, 
+      exercise_goal: this.activityToExercise[this.state.activity],
       BMI: BMI, 
       water_goal: water_goal, 
       intake_goal: intake_goal
@@ -94,7 +110,8 @@ class User extends Component {
           <form className="userForm">
           <Row className="userFormSection">
             <Col className="s12 center-align">
-                <TextInput
+                <TextInput 
+                  m={12} 
                   value={this.state.name}
                   onChange={this.handleInputChange}
                   name="name"
@@ -105,6 +122,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
+                  m={12} 
                   value={this.state.age}
                   onChange={this.handleInputChange}
                   name="age"
@@ -115,6 +133,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
+                  m={12} 
                   value={this.state.weight}
                   onChange={this.handleInputChange}
                   name="weight"
@@ -125,6 +144,7 @@ class User extends Component {
             <Row>
               <Col className="s12 center-align">
                 <TextInput
+                  m={12} 
                   value={this.state.height}
                   onChange={this.handleInputChange}
                   name="height"
@@ -134,18 +154,18 @@ class User extends Component {
             </Row>
             <Row>
               <Col className="s12 center-align">
-                <Select value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level">
-                  <option value="sedentary">Sedentary</option>
-                  <option value="light">Light</option>
-                  <option value="moderate">Moderate</option>
-                  <option value="veryActive">Very Active</option>
-                  <option value="extremelyActive">Extremely Active</option>
+                <Select m={12} value={this.state.activity} onChange={this.handleSelectChange} label="Activity Level" name = "activity">
+                  <option value="sSedentary">Sedentary</option>
+                  <option value="Light">Light</option>
+                  <option value="Moderate">Moderate</option>
+                  <option value="Very Active">Very Active</option>
+                  <option value="Extremely Active">Extremely Active</option>
                 </Select>
                 </Col>
             </Row>
             <Row>
               <Col className="s12 center-align">
-                <Select value={this.state.gender} onChange={this.handleSelectChange} label="Activity Level">
+                <Select m={12} value={this.state.gender} onChange={this.handleSelectChange} label="Gender" name="gender">
                   <option value="Male">Male</option>
                   <option value="Female">Female</option>
                 </Select>

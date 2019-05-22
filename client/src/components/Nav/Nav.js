@@ -22,7 +22,16 @@ class Nav extends Component {
       activity: "",
       gender: ""
     };
+
+    this.activityToExercise = {
+      "Sedentary": 0,
+      "Light": 1,
+      "Moderate": 2,
+      "Very Active": 3,
+      "Extremely Active": 4
+    };
   }
+
 
   
   componentDidMount() {
@@ -88,7 +97,7 @@ class Nav extends Component {
       //   water_goal: water_goal,
       //   intake_goal: intake_goal
       // })
-      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height, this.state.gender, this.state.activity, BMI, water_goal, intake_goal)
+      API.signUpUser(this.state.email, this.state.password, this.state.name, this.state.age, this.state.weight, this.state.height, this.state.gender, this.state.activity, this.activityToExercise[this.state.activity], BMI, water_goal, intake_goal)
         .then(res => {
           // once the user has signed up
           // log them in
