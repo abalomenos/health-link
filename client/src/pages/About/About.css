@@ -18,9 +18,14 @@ margin-bottom: 5px
 .health{
 text-align: center;
 }
+
+.health img {
+  max-width: 100%;
+}
 .s12{
 text-align: center;
 }
 .mainWrapper{
 margin-top: -30px;
 }
+

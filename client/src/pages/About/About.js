@@ -78,21 +78,16 @@ class About extends Component {
               <p>
                 Come see how we can use your data to help you achieve your goals!
               </p>
-              <p>               -The Health Link team</p>
+              <p className="center-align">-The Health Link Team</p>
             </Col>
           </Row>
           <Row className="health"> 
-            
-            <img src={fourth} alt="Health"/>
-
+            <Col className="s12">
+              <img src={fourth} alt="Health"/>
+            </Col>
           </Row>
         </Container>
 
-
-
-
-
-       
       </div>
     );
   }

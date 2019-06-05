@@ -14,7 +14,7 @@ class Foot extends Component {
                     }
                     // moreLinks={<a />}
                     links={
-                        <ul>
+                        <ul className="footerUL">
                             <p className="center-align">
                                 Team
                             </p>
@@ -129,7 +129,7 @@ class Foot extends Component {
                                 <h5 className="center-align">
                                     Health Link
                                 </h5>
-                                <p className="text">
+                                <p className="center-align">
                                     Your one stop for Health and Fitness
                                 </p>
                                 <p className="text">
